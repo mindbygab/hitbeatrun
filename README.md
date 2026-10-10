@@ -8,12 +8,12 @@ No Wix, no hosting bill.
 | Main site (hitbeatrun.com) | `index.html` |
 | Fourthwall subscription landing page (same design) | `subscribe/index.html` → hitbeatrun.com/subscribe/ |
 | 8 song workout videos | `songs/*.html` |
-| Legal pages | `*.html` in the root |
+| Terms of Service + Privacy Policy | `legal.html` |
 
 ## 1. Set your links (once)
 Open `assets/js/main.js` and edit the three values at the top:
 - `FOURTHWALL_URL` – where every "Let's Run" button goes (now https://hitbeatrun.com/supporters)
-- `FOURTHWALL_HOME` – your Fourthwall shop (used by "Log In")
+- `FOURTHWALL_LOGIN` – where "Log In" goes (members watch the videos on Fourthwall)
 - `CONTACT_EMAIL` – shown in the footer, receives form messages
 - `FORM_ENDPOINT` – optional (e.g. a free Formspree form) so the newsletter form submit without opening the visitor's email app
 

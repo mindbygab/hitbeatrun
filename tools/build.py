@@ -7,8 +7,7 @@ Outputs (relative to the site root):
     index.html                 main site (hitbeatrun.com)
     subscribe/index.html       Fourthwall subscription landing page (same design)
     songs/index.html, songs/<slug>.html
-    terms-and-conditions.html, privacy-policy.html,
-    refund-policy.html, accessibility-statement.html
+    legal.html (Terms of Service + Privacy Policy)
 """
 from html import escape
 from pathlib import Path
@@ -62,16 +61,14 @@ def head(R, title, desc):
 def header(R, mode, home_active=True):
     L = LABELS[mode]
     home = f"{R}index.html" if mode == "main" else "./"
-    song_links = "".join(f'<a href="{R}songs/{s[0]}.html">{escape(s[5])}</a>' for s in SONGS)
     return f"""<header class="site-header">
   <a class="logo" href="{home}" aria-label="Home"><img src="{R}assets/img/logo-mind.png" alt="Mind by Gab"></a>
   <nav class="nav" aria-label="Main">
-    <a href="{home}" data-home{' class="active"' if home_active else ''}>Home</a>
-    <span class="dd"><a href="{R}songs/">Songs</a><span class="dd-menu"><div>{song_links}</div></span></span>
-    <a href="{home}#speakers">Speakers</a>
+    <a href="{home}"{' class="active"' if home_active else ''}>Home</a>
+    <a href="#" data-fourthwall>Log In</a>
+    <a href="{home}#songs">Songs</a>
   </nav>
   <div class="header-right">
-    <a class="login" href="#" data-fourthwall>Log In</a>
     <a class="btn btn-outline btn-run" href="#" data-cta>{L['tickets']}</a>
     <button class="burger" aria-label="Menu">&#9776;</button>
   </div>
@@ -95,20 +92,36 @@ def footer(R, mode):
     <div class="ns-field"><input type="email" name="email" placeholder="Your email" required aria-label="Your email"><button type="submit">Sign up</button></div>
     <p class="form-msg" role="status"></p>
   </form>
-  <div class="foot-bottom">
-    <a class="logo" href="{home}" aria-label="Home"><img src="{R}assets/img/logo-mind.png" alt="Mind by Gab"></a>
-    <nav class="fb-links" aria-label="Footer">
-      <a href="{home}">Home</a><a href="{R}songs/">Songs</a><a href="{home}#speakers">Speakers</a><a href="{home}#join">Membership</a>
-    </nav>
-    <div class="fb-social">
-      <a href="https://www.facebook.com/hitbeatrun" target="_blank" rel="noopener" aria-label="HitBeatRun on Facebook"><svg viewBox="0 0 24 24"><path d="M14 8.5V6.8c0-.8.2-1.3 1.4-1.3H17V2.6c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4.1v1.9H8v3.2h2.6V21H14v-9.3h2.6l.4-3.2z"/></svg></a>
-      <a href="https://www.instagram.com/hitbeatrun" target="_blank" rel="noopener" aria-label="HitBeatRun on Instagram"><svg viewBox="0 0 24 24"><path d="M12 7.3A4.7 4.7 0 1 0 12 16.7 4.7 4.7 0 0 0 12 7.3zm0 7.7a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm4.9-8.9a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2zM21.9 7.6c-.1-1.6-.4-3-1.6-4.2S17.7 1.9 16.1 1.8C14.5 1.7 9.5 1.7 7.9 1.8 6.3 1.9 4.9 2.2 3.7 3.4S2.1 6 2 7.6c-.1 1.6-.1 6.6 0 8.2.1 1.6.4 3 1.6 4.2s2.6 1.5 4.2 1.6c1.6.1 6.6.1 8.2 0 1.6-.1 3-.4 4.2-1.6s1.5-2.6 1.6-4.2c.2-1.6.2-6.6.1-8.2zm-2.1 9.9a3.2 3.2 0 0 1-1.8 1.8c-1.3.5-4.3.4-5.7.4s-4.4.1-5.7-.4a3.2 3.2 0 0 1-1.8-1.8c-.5-1.3-.4-4.3-.4-5.7s-.1-4.4.4-5.7A3.2 3.2 0 0 1 6.6 4.3c1.3-.5 4.3-.4 5.7-.4s4.4-.1 5.7.4a3.2 3.2 0 0 1 1.8 1.8c.5 1.3.4 4.3.4 5.7s.1 4.4-.4 5.7z"/></svg></a>
+  <div class="foot-cols">
+    <div class="fc-brand">
+      <a class="logo" href="{home}" aria-label="Home"><img src="{R}assets/img/logo-mind.png" alt="Mind by Gab"></a>
+      <p>Run to the beat. Pre-recorded running videos with speed cues timed to the music.</p>
+      <div class="fb-social">
+        <a href="https://www.facebook.com/hitbeatrun" target="_blank" rel="noopener" aria-label="HitBeatRun on Facebook"><svg viewBox="0 0 24 24"><path d="M14 8.5V6.8c0-.8.2-1.3 1.4-1.3H17V2.6c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4.1v1.9H8v3.2h2.6V21H14v-9.3h2.6l.4-3.2z"/></svg></a>
+        <a href="https://www.instagram.com/hitbeatrun" target="_blank" rel="noopener" aria-label="HitBeatRun on Instagram"><svg viewBox="0 0 24 24"><path d="M12 7.3A4.7 4.7 0 1 0 12 16.7 4.7 4.7 0 0 0 12 7.3zm0 7.7a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm4.9-8.9a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2zM21.9 7.6c-.1-1.6-.4-3-1.6-4.2S17.7 1.9 16.1 1.8C14.5 1.7 9.5 1.7 7.9 1.8 6.3 1.9 4.9 2.2 3.7 3.4S2.1 6 2 7.6c-.1 1.6-.1 6.6 0 8.2.1 1.6.4 3 1.6 4.2s2.6 1.5 4.2 1.6c1.6.1 6.6.1 8.2 0 1.6-.1 3-.4 4.2-1.6s1.5-2.6 1.6-4.2c.2-1.6.2-6.6.1-8.2zm-2.1 9.9a3.2 3.2 0 0 1-1.8 1.8c-1.3.5-4.3.4-5.7.4s-4.4.1-5.7-.4a3.2 3.2 0 0 1-1.8-1.8c-.5-1.3-.4-4.3-.4-5.7s-.1-4.4.4-5.7A3.2 3.2 0 0 1 6.6 4.3c1.3-.5 4.3-.4 5.7-.4s4.4-.1 5.7.4a3.2 3.2 0 0 1 1.8 1.8c.5 1.3.4 4.3.4 5.7s.1 4.4-.4 5.7z"/></svg></a>
+      </div>
+    </div>
+    <div class="fc-col">
+      <h4>Explore</h4>
+      <a href="{home}">Home</a>
+      <a href="{home}#songs">Songs</a>
+      <a href="{home}#join">Membership</a>
+      <a href="#" data-fourthwall>Log In</a>
+    </div>
+    <div class="fc-col">
+      <h4>Legal</h4>
+      <a href="{R}legal.html#terms">Terms of Service</a>
+      <a href="{R}legal.html#privacy">Privacy Policy</a>
+    </div>
+    <div class="fc-col">
+      <h4>Contact Us</h4>
+      <p>Questions about HitBeatRun or your membership?</p>
+      <a class="fc-email" href="#" data-email></a>
     </div>
   </div>
   <div class="foot-legal">
-    <span>&copy; 2026 HitBeatRun by Mind by Gab</span>
-    <a href="#" data-email></a>
-    <a href="{R}terms-and-conditions.html">Terms</a><a href="{R}privacy-policy.html">Privacy</a><a href="{R}refund-policy.html">Refunds</a><a href="{R}accessibility-statement.html">Accessibility</a>
+    <span>&copy; 2026 HitBeatRun by Mind by Gab. All rights reserved.</span>
+    <span><a href="{R}legal.html#terms">Terms</a> &middot; <a href="{R}legal.html#privacy">Privacy</a></span>
   </div>
 </footer>
 <script src="{R}assets/js/main.js?v={ver("assets/js/main.js")}"></script>
@@ -129,7 +142,7 @@ def home_page(R, mode):
     song_rows = "".join(
         f"""<div class="song reveal"><img src="{R}assets/img/{s[3]}" alt="" loading="lazy">
         <div class="meta"><div class="t">{escape(s[1])}</div><div class="a">{escape(s[2])}</div></div>
-        <a class="btn btn-outline" href="{R}songs/{s[0]}.html">Play</a></div>"""
+        <a class="btn btn-outline btn-play" href="{R}songs/{s[0]}.html"><span>&#9654;</span> Play</a></div>"""
         for s in SONGS)
     title = "HitBeatRun | Boost Your Workout by Running to the Beat"
     if mode == "landing":
@@ -313,9 +326,16 @@ def home_page(R, mode):
 
 <!-- ================= SONGS ================= -->
 <section class="wrap songs" id="songs">
-  <h2 class="big-title reveal">Songs</h2>
+  <div class="songs-head reveal">
+    <span class="eyebrow">Free preview</span>
+    <h2 class="big-title">Try It <span class="grad-text">Live</span></h2>
+    <p class="lead">Check how HitBeatRun works with some popular songs. Press play, follow the speed cues and try it out.</p>
+  </div>
   <div class="song-list">{song_rows}</div>
-  <div class="cta-row"><a class="btn btn-white btn-run" href="#" data-cta>{RUN}</a></div>
+  <div class="songs-cta reveal">
+    <p>Liked it? Members get every song, with new ones added regularly.</p>
+    <a class="btn btn-white btn-run" href="#" data-cta>{RUN}</a>
+  </div>
 </section>
 
 <!-- ================= ATHLETE (Speakers) ================= -->
@@ -395,36 +415,43 @@ def songs_index(R):
 """ + footer(R, "main")
 
 
-LEGAL = {
-    "terms-and-conditions": ("Terms &amp; Conditions", [
-        "By using hitbeatrun.com you agree to these terms. The HitBeatRun videos, course material, research and the HitBeatRun algorithm are the property of Mind by Gab and are provided for personal, non-commercial use.",
-        "Running and interval training involve physical exertion. Consult a medical professional before starting any new exercise program, and always run at speeds that are safe for you. You use HitBeatRun at your own risk.",
-        "Subscriptions and purchases are processed by Fourthwall and are also subject to Fourthwall's terms.",
-        "We may update these terms from time to time. Questions? Contact us at the email address in the footer.",
-    ]),
-    "privacy-policy": ("Privacy Policy", [
-        "We only collect the information you choose to send us, such as your email address when you subscribe to the newsletter or email us.",
-        "We use it to reply to you and to send the newsletter you asked for. We never sell your personal information. You can unsubscribe or ask us to delete your data at any time by emailing us.",
-        "Payments and memberships are handled by Fourthwall, which has its own privacy policy.",
-    ]),
-    "refund-policy": ("Refund Policy", [
-        "Subscriptions to the HitBeatRun running videos are sold and billed through Fourthwall. You can cancel your subscription at any time from your Fourthwall account; cancellation stops future renewals.",
-        "If you have a billing problem or believe you were charged in error, contact us within 14 days and we will make it right.",
-    ]),
-    "accessibility-statement": ("Accessibility statement", [
-        "We want everyone to be able to use HitBeatRun. This site uses semantic HTML, text alternatives for images, keyboard-accessible controls and respects your device's reduced-motion setting.",
-        "If you run into an accessibility barrier, please email us and we will work to fix it.",
-    ]),
-}
+TERMS = [
+    ("About HitBeatRun", "HitBeatRun (hitbeatrun.com) is run by Mind by Gab. HitBeatRun provides pre-recorded running videos with on-screen speed cues timed to the music. The videos are a guide: you choose and control your own low, medium and max speeds on your treadmill or outdoors."),
+    ("Membership and billing", "Members-only videos are offered through a paid membership (currently $4.99 per month) that is sold, billed and delivered through Fourthwall. By subscribing you also agree to Fourthwall's terms. Your membership renews automatically each month until you cancel. You can cancel at any time from your Fourthwall account; you keep access until the end of the period you already paid for."),
+    ("Refunds", "Because members get immediate access to digital content, payments are generally non-refundable. If you were charged in error or have a billing problem, contact us within 14 days and we will make it right."),
+    ("Your health and safety", "Running and interval training are physically demanding. Consult a doctor before starting any new exercise program, especially if you have a medical condition. Only run at speeds that are safe for you, use treadmill safety features, and stop immediately if you feel pain, dizziness or shortness of breath. HitBeatRun is not medical advice, and you exercise at your own risk."),
+    ("Your account and our content", "Membership is for one person's personal, non-commercial use. HitBeatRun videos, speed cues, course material, research and branding belong to Mind by Gab. Please don't download, copy, share, resell or publicly show members-only videos, or share your login. We may suspend access for accounts that break these terms."),
+    ("Music", "Songs featured in HitBeatRun videos belong to their respective artists and rights holders. Their use in HitBeatRun does not mean they endorse HitBeatRun."),
+    ("Changes and limits", "We may update HitBeatRun, its videos, pricing or these terms over time; we will post changes on this page. To the extent allowed by law, HitBeatRun is provided \"as is\" and Mind by Gab is not liable for indirect damages arising from your use of it."),
+]
+
+PRIVACY = [
+    ("What we collect", "On this website we only collect what you choose to give us: your email address if you sign up for the newsletter, and anything you send us by email. Membership sign-ups, logins and payments happen on Fourthwall, which collects the details needed to run your account and process payments under its own privacy policy. We never see your full card details."),
+    ("How we use it", "We use your email to send the newsletter you asked for and to reply to your messages. Fourthwall shares with us the basic member information needed to provide your membership (such as your name, email and membership status)."),
+    ("What we never do", "We do not sell or rent your personal information, and we do not share it with third parties for their own marketing."),
+    ("Your choices", "You can unsubscribe from the newsletter at any time using the link in any email. You can ask us to access, correct or delete your information by emailing us."),
+    ("Cookies", "This website does not use advertising or tracking cookies. Fourthwall pages may use cookies to keep you logged in and process payments."),
+    ("Contact", "Questions about privacy? Email us at the address below and we will get back to you."),
+]
 
 
-def legal_page(R, slug):
-    title, paras = LEGAL[slug]
-    body = "".join(f"<p style=\"font-size:17px;line-height:1.7;margin-top:22px\">{p}</p>" for p in paras)
-    return head(R, f"{title.replace('&amp;', '&')} | HitBeatRun", title.replace('&amp;', '&')) + f"""
+def legal_page(R):
+    def block(items):
+        return "".join(f"<h3>{escape(t)}</h3><p>{escape(x)}</p>" for t, x in items)
+    return head(R, "Terms of Service & Privacy Policy | HitBeatRun", "HitBeatRun terms of service and privacy policy.") + f"""
 <body data-root="{R}" data-mode="main">
 {header(R, "main", home_active=False)}
-<main class="wrap page" style="max-width:820px"><h1 class="big-title" style="text-align:left">{title}</h1>{body}</main>
+<main class="legal">
+  <div class="legal-head">
+    <span class="eyebrow">Legal</span>
+    <h1>Terms of Service &amp; <span class="grad-text">Privacy Policy</span></h1>
+    <p>Last updated: October 10, 2026</p>
+    <div class="legal-jump"><a href="#terms">Terms of Service</a><a href="#privacy">Privacy Policy</a></div>
+  </div>
+  <section class="legal-card" id="terms"><h2>Terms of Service</h2>{block(TERMS)}</section>
+  <section class="legal-card" id="privacy"><h2>Privacy Policy</h2>{block(PRIVACY)}
+    <p>Contact: <a href="#" data-email></a></p></section>
+</main>
 """ + footer(R, "main")
 
 
@@ -441,5 +468,4 @@ if __name__ == "__main__":
     write("songs/index.html", songs_index("../"))
     for i, s in enumerate(SONGS):
         write(f"songs/{s[0]}.html", song_page("../", i))
-    for slug in LEGAL:
-        write(f"{slug}.html", legal_page("", slug))
+    write("legal.html", legal_page(""))

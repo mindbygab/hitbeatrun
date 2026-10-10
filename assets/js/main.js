@@ -4,8 +4,8 @@
 const HBR = {
   // Your Fourthwall subscription / membership page (every "Let's Run" button goes here)
   FOURTHWALL_URL: 'https://hitbeatrun.com/supporters',
-  // Your Fourthwall shop home (used by "Log In")
-  FOURTHWALL_HOME: 'https://hitbeatrun.com',
+  // Where members log in to watch the videos ("Log In" links)
+  FOURTHWALL_LOGIN: 'https://hitbeatrun.com/supporters',
   // Shown in the footer and used by the forms when no FORM_ENDPOINT is set
   CONTACT_EMAIL: 'info@hitbeatrun.com',
   // Optional: a Formspree / Getform / Basin URL so forms submit without opening email
@@ -17,7 +17,7 @@ const HBR = {
 
   // Every "Let's Run" button goes to the Fourthwall subscription page
   document.querySelectorAll('[data-cta]').forEach(a => { a.href = HBR.FOURTHWALL_URL; });
-  document.querySelectorAll('[data-fourthwall]').forEach(a => { a.href = HBR.FOURTHWALL_HOME; });
+  document.querySelectorAll('[data-fourthwall]').forEach(a => { a.href = HBR.FOURTHWALL_LOGIN; });
   document.querySelectorAll('[data-email]').forEach(a => {
     a.href = 'mailto:' + HBR.CONTACT_EMAIL; a.textContent = HBR.CONTACT_EMAIL;
   });
@@ -93,17 +93,6 @@ const HBR = {
       });
       card.addEventListener('mouseleave', () => { card.style.transform = ''; });
     });
-  }
-
-  // Highlight "Speakers" while the athlete section is on screen
-  const speakers = document.querySelector('.nav a[href$="#speakers"]');
-  const home = document.querySelector('.nav a[data-home]');
-  const sec = document.getElementById('speakers');
-  if (speakers && sec && home) {
-    new IntersectionObserver(([e]) => {
-      speakers.classList.toggle('active', e.isIntersecting);
-      home.classList.toggle('active', !e.isIntersecting);
-    }, { threshold: 0.4 }).observe(sec);
   }
 
   // Newsletter form
