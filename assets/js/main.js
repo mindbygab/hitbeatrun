@@ -3,9 +3,9 @@
    ============================================================ */
 const HBR = {
   // Your Fourthwall subscription / membership page (every "Let's Run" button goes here)
-  FOURTHWALL_URL: 'https://hitbeatrun.com/supporters',
+  FOURTHWALL_URL: 'https://members.hitbeatrun.com/supporters',
   // Where members log in to watch the videos ("Log In" links)
-  FOURTHWALL_LOGIN: 'https://hitbeatrun.com/supporters',
+  FOURTHWALL_LOGIN: 'https://members.hitbeatrun.com/supporters',
   // Shown in the footer and used by the forms when no FORM_ENDPOINT is set
   CONTACT_EMAIL: 'info@hitbeatrun.com',
   // Optional: a Formspree / Getform / Basin URL so forms submit without opening email
