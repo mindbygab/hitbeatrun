@@ -179,7 +179,7 @@ def home_page(R, mode):
 <!-- ================= RUN BANNER ================= -->
 <section class="run-banner reveal">
   <h2>Ready to transform your running game?</h2>
-  <p>Learn how to set your running speeds, sync with the energy of the music, and optimize every workout for maximum results.</p>
+  <p>Find your three running speeds, follow the cues in every video as the music builds and drops, and get more out of every workout.</p>
   <a class="btn btn-black btn-run" href="#" data-cta>{RUN}</a>
 </section>
 
@@ -292,9 +292,10 @@ def home_page(R, mode):
         <div class="step-in">
           <span class="step-num">02</span>
           <div class="shot"><img src="{R}assets/img/gs-speeds.png" alt="Your three speed running intervals: 6.5, 7.5 and 8.5 mph" loading="lazy"></div>
-          <span class="step-tag">Your perfect workout</span>
-          <h3>Set your three speeds</h3>
-          <p>Choose your low, medium and max speeds and let the music guide you. With the techniques I'll teach you, every run becomes an incredible workout.</p>
+          <span class="step-tag">Run at your own pace</span>
+          <h3>Your three speeds, one guide</h3>
+          <p>Know your own low, medium and max running speeds. Every HitBeatRun video is pre-recorded with on-screen cues, so you just switch to the speed it calls for, right on the beat.</p>
+          <a class="step-link" href="#" data-cta>Unlock the videos &rarr;</a>
         </div>
       </figure>
       <figure class="step reveal">

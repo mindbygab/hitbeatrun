@@ -184,6 +184,8 @@ h1, h2, h3, .heavy { font-family: var(--heavy); font-weight: 700; }
 .step-tag { display: inline-block; font-family: var(--heavy); font-weight: 700; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; padding: 6px 12px; border-radius: 20px; background: rgba(94,182,229,.12); color: var(--sky); margin: 0 6px 12px; }
 .step h3 { font-size: 26px; line-height: 1.2; margin: 0 6px 10px; }
 .step p { font-size: 15.5px; line-height: 1.6; color: rgba(255,255,255,.82); margin: 0 6px; }
+.step-link { display: inline-block; margin: 14px 6px 0; font-family: var(--heavy); font-weight: 700; font-size: 15px; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; transition: letter-spacing .2s; }
+.step-link:hover { letter-spacing: .02em; }
 
 /* ---------- songs ---------- */
 .songs { padding: 40px 0 90px; }
