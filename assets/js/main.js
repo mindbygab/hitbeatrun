@@ -66,6 +66,17 @@ const HBR = {
     update();
   }
 
+  // Hero: floating tags and icons drift with the mouse (desktop only)
+  const heroTop = document.querySelector('.hero-top');
+  if (heroTop && matchMedia('(hover: hover) and (prefers-reduced-motion: no-preference)').matches) {
+    heroTop.addEventListener('mousemove', e => {
+      const r = heroTop.getBoundingClientRect();
+      heroTop.style.setProperty('--mx', ((e.clientX - r.left) / r.width - 0.5).toFixed(3));
+      heroTop.style.setProperty('--my', ((e.clientY - r.top) / r.height - 0.5).toFixed(3));
+    });
+    heroTop.addEventListener('mouseleave', () => { heroTop.style.setProperty('--mx', 0); heroTop.style.setProperty('--my', 0); });
+  }
+
   // Reveal-on-scroll and the progress bars
   const rio = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); rio.unobserve(e.target); } });
