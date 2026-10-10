@@ -15,6 +15,12 @@ from pathlib import Path
 
 SITE = Path(__file__).resolve().parent.parent
 
+
+def ver(rel):
+    """Cache-busting tag: changes whenever the file changes, so browsers fetch the new version."""
+    import hashlib
+    return hashlib.md5((SITE / rel).read_bytes()).hexdigest()[:8]
+
 SONGS = [
     # slug, title, artist, cover, video, page heading (as on Wix)
     ("where-you-are", "Where You Are (GRiZ Remix)", "John Summit & Hayla", "cover-whereyouare.jpg", "song-where-you-are", "John Summit & Hayla - Where You Are"),
@@ -49,7 +55,7 @@ def head(R, title, desc):
 <meta property="og:description" content="{escape(desc)}">
 <meta property="og:image" content="https://hitbeatrun.com/assets/img/hero-logo.png">
 <link rel="icon" href="{R}assets/img/hero-logo.png">
-<link rel="stylesheet" href="{R}assets/css/style.css">
+<link rel="stylesheet" href="{R}assets/css/style.css?v={ver("assets/css/style.css")}">
 </head>"""
 
 
@@ -111,7 +117,7 @@ def footer(R, mode):
     </div>
   </div>
 </footer>
-<script src="{R}assets/js/main.js"></script>
+<script src="{R}assets/js/main.js?v={ver("assets/js/main.js")}"></script>
 </body>
 </html>
 """

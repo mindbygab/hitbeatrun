@@ -305,7 +305,7 @@ h1, h2, h3, .heavy { font-family: var(--heavy); font-weight: 700; }
 .form-card button { grid-column: 1 / -1; height: 46px; border-radius: 100px; border: 0; background: #000; color: #fff; font-family: var(--heavy); font-weight: 700; font-size: 15px; cursor: pointer; }
 
 /* ---------- reveal ---------- */
-.reveal { opacity: 0; transform: translateY(40px); transition: opacity .8s ease, transform .8s ease; }
+.reveal { opacity: 0; transform: translateY(32px); transition: opacity .6s ease, transform .6s ease; }
 .reveal.in { opacity: 1; transform: none; }
 
 /* ---------- responsive ---------- */
@@ -349,6 +349,23 @@ h1, h2, h3, .heavy { font-family: var(--heavy); font-weight: 700; }
   .s-energy { left: 6%; top: 300px; } .s-energy .float-icon { width: 56px; }
   .s-watch { right: 6%; top: 440px; } .s-watch .float-icon { width: 46px; }
   .form-card { grid-template-columns: 1fr; padding: 24px; }
+  /* hero on phones: tags sit above the title instead of on top of it */
+  .hero { padding-top: 84px; }
+  .hero h1 { padding-top: 30px; }
+  .hero .tagline { font-size: 30px; padding: 0 12px; }
+  .s-tech { top: -58px; left: 16px; }
+  .s-bpm { top: -58px; left: auto; right: 16px; }
+  .s-run { top: 300px; right: 10px; }
+  .s-energy { top: 330px; left: 4%; }
+  .s-watch { top: 200px; right: 5%; }
+  .pill-tech, .bpm { font-size: 14px; }
+  /* footer on phones */
+  .f-nav { min-height: 0; }
+  .f-nav .legal { margin-top: 28px; padding-top: 0; }
+  .f-contact { min-height: 340px; padding: 30px; }
+  .f-contact .c-img { width: 230px; right: -70px; top: auto; bottom: -50px; transform: none; opacity: .55; }
+  .f-mid { grid-template-rows: 260px 100px; }
+  .f-tickets a { width: 150px; height: 200px; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
