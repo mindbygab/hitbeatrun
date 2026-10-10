@@ -45,7 +45,11 @@ h1, h2, h3, .heavy { font-family: var(--heavy); font-weight: 700; }
 .nav a:hover, .nav a.active { color: #e9a6f0; }
 .nav a:hover::after, .nav a.active::after { transform: scaleX(1); }
 .header-right { display: flex; align-items: center; gap: 22px; }
+.header-right { gap: 10px !important; }
 .header-right .btn { padding: 9px 20px; }
+.btn-login { background: rgba(255,255,255,.08); color: #fff; border: 1px solid rgba(255,255,255,.18); }
+.btn-login:hover { background: var(--grad); border-color: transparent; }
+.btn-login svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
 .burger { display: none; background: none; border: 0; color: #fff; font-size: 26px; cursor: pointer; }
 
 /* ---------- hero ---------- */
@@ -446,7 +450,8 @@ h1, h2, h3, .heavy { font-family: var(--heavy); font-weight: 700; }
   .orbit { top: 560px; } .orbit-2 { top: 640px; }
 }
 @media (max-width: 600px) {
-  .header-right .btn { padding: 7px 14px; font-size: 13px; }
+  .header-right .btn { padding: 7px 12px; font-size: 13px; }
+  .btn-login svg { display: none; }
   .perks { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
   .perk-img { aspect-ratio: 16/9; }
   .btn-big { font-size: 16px; padding: 15px 26px; }

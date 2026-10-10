@@ -69,6 +69,7 @@ def header(R, mode, home_active=True):
     <a href="{home}#songs">Try It Live</a>
   </nav>
   <div class="header-right">
+    <a class="btn btn-login" href="#" data-fourthwall><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>Log In</a>
     <a class="btn btn-outline btn-run" href="#" data-cta>{L['tickets']}</a>
     <button class="burger" aria-label="Menu">&#9776;</button>
   </div>
