@@ -308,6 +308,7 @@ h1, h2, h3, .heavy { font-family: var(--heavy); font-weight: 700; }
 .foot-legal { position: relative; width: min(1200px, calc(100% - 32px)); margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 22px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,.08); font-size: 13px; color: var(--grey); }
 .foot-legal a { color: var(--grey); transition: color .2s; }
 .foot-legal a:hover { color: #fff; }
+.foot-legal .mg-link { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
 
 /* ---------- song page ---------- */
 .song-page { background: var(--navy); min-height: calc(100vh - 59px); padding: 60px 0 90px; }

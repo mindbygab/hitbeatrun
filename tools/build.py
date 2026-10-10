@@ -62,7 +62,7 @@ def header(R, mode, home_active=True):
     L = LABELS[mode]
     home = f"{R}index.html" if mode == "main" else "./"
     return f"""<header class="site-header">
-  <a class="logo" href="{home}" aria-label="Home"><img src="{R}assets/img/logo-mind.png" alt="Mind by Gab"></a>
+  <a class="logo" href="https://www.mindbygab.com" target="_blank" rel="noopener" aria-label="Mind by Gab website"><img src="{R}assets/img/logo-mind.png" alt="Mind by Gab"></a>
   <nav class="nav" aria-label="Main">
     <a href="{home}"{' class="active"' if home_active else ''}>Home</a>
     <a href="#" data-fourthwall>Log In</a>
@@ -94,7 +94,7 @@ def footer(R, mode):
   </form>
   <div class="foot-cols">
     <div class="fc-brand">
-      <a class="logo" href="{home}" aria-label="Home"><img src="{R}assets/img/logo-mind.png" alt="Mind by Gab"></a>
+      <a class="logo" href="https://www.mindbygab.com" target="_blank" rel="noopener" aria-label="Mind by Gab website"><img src="{R}assets/img/logo-mind.png" alt="Mind by Gab"></a>
       <p>Run to the beat. Pre-recorded running videos with speed cues timed to the music.</p>
       <div class="fb-social">
         <a href="https://www.facebook.com/hitbeatrun" target="_blank" rel="noopener" aria-label="HitBeatRun on Facebook"><svg viewBox="0 0 24 24"><path d="M14 8.5V6.8c0-.8.2-1.3 1.4-1.3H17V2.6c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4.1v1.9H8v3.2h2.6V21H14v-9.3h2.6l.4-3.2z"/></svg></a>
@@ -120,7 +120,7 @@ def footer(R, mode):
     </div>
   </div>
   <div class="foot-legal">
-    <span>&copy; 2026 HitBeatRun by Mind by Gab. All rights reserved.</span>
+    <span>&copy; 2026 HitBeatRun by <a class="mg-link" href="https://www.mindbygab.com" target="_blank" rel="noopener">Mind by Gab</a>. All rights reserved.</span>
     <span><a href="{R}legal.html#terms">Terms</a> &middot; <a href="{R}legal.html#privacy">Privacy</a></span>
   </div>
 </footer>
@@ -318,6 +318,7 @@ def home_page(R, mode):
           <span class="step-tag">The mind behind HitBeatRun</span>
           <h3>Built by a runner who codes</h3>
           <p>As a tech geek with a passion for fitness and music, I built HitBeatRun to blend all three worlds into a tool that keeps you moving, motivated and in rhythm.</p>
+          <a class="step-link" href="https://www.mindbygab.com" target="_blank" rel="noopener">Visit Mind by Gab &rarr;</a>
         </div>
       </figure>
     </div>
