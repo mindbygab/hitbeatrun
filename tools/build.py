@@ -212,42 +212,6 @@ def home_page(R, mode):
   </div>
 </section>
 
-<!-- ================= WHAT IS ================= -->
-<section class="wrap what" id="what">
-  <div class="what-card reveal">
-    <h2>What is HitBeatRun?</h2>
-    <p>Hit BeatRun is an innovative running algorithm designed to help you harness the power of rhythm to enhance your running experience.</p>
-    <p>By syncing your steps to carefully curated beats, it creates a seamless connection between music and movement, improving your pace, endurance, and overall performance.</p>
-    <p>Whether you're a beginner or a seasoned runner, Hit BeatRun transforms every run into an energizing and immersive journey.</p>
-    <a class="btn btn-black btn-run" href="#" data-cta>{RUN}</a>
-  </div>
-  <div class="what-right">
-    <div class="bars"><div class="bar"><i></i></div><div class="bar"><i></i></div><div class="bar"><i></i></div><div class="bar"><i></i></div></div>
-    <div class="navy-card reveal">{bg_video(R, "what-is", "poster-7bd19447.jpg")}</div>
-  </div>
-</section>
-
-<!-- ================= GETTING STARTED ================= -->
-<section class="getting"><h2 class="big-title reveal">Getting Started</h2></section>
-<section class="wrap how">
-  <figure class="reveal"><div class="shot"><img src="{R}assets/img/gs-tutorial.png" alt="HitBeatRun tutorial: song title, music video, energy boost, speed" loading="lazy"></div>
-    <h3>How HitBeatRun<br>Works?</h3>
-    <p>HitBeatRun analyzes music's beats per minute (BPM) and energy levels to guide your running pace, signaling when to speed up or slow down.</p></figure>
-  <figure class="reveal"><div class="shot"><img src="{R}assets/img/gs-gab.png" alt="Gab, creator of HitBeatRun" loading="lazy"></div>
-    <h3>The Mind Behind HitBeatRun</h3>
-    <p>As a tech geek with a passion for fitness and music, I developed HitBeatRun to blend the best of all three worlds, creating a tool that keeps you moving, motivated, and in rhythm.</p></figure>
-  <figure class="reveal"><div class="shot"><img src="{R}assets/img/gs-speeds.png" alt="Your three speed running intervals" loading="lazy"></div>
-    <h3>Unlock Your Perfect Workout</h3>
-    <p>Set up your three running speeds, and let the music guide you! With the techniques I'll teach you, you'll master how to use HitBeatRun for an incredible workout.</p></figure>
-</section>
-
-<!-- ================= SONGS ================= -->
-<section class="wrap songs" id="songs">
-  <h2 class="big-title reveal">Songs</h2>
-  <div class="song-list">{song_rows}</div>
-  <div class="cta-row"><a class="btn btn-white btn-run" href="#" data-cta>{RUN}</a></div>
-</section>
-
 <!-- ================= WHAT'S INSIDE THE SUBSCRIPTION ================= -->
 <section class="wrap inside" id="inside">
   <div class="inside-head reveal">
@@ -289,6 +253,42 @@ def home_page(R, mode):
     <a class="btn btn-white btn-run btn-big" href="#" data-cta>Try it now &middot; $4.99/month</a>
     <small>Billed monthly through Fourthwall. Cancel anytime.</small>
   </div>
+</section>
+
+<!-- ================= WHAT IS ================= -->
+<section class="wrap what" id="what">
+  <div class="what-card reveal">
+    <h2>What is HitBeatRun?</h2>
+    <p>Hit BeatRun is an innovative running algorithm designed to help you harness the power of rhythm to enhance your running experience.</p>
+    <p>By syncing your steps to carefully curated beats, it creates a seamless connection between music and movement, improving your pace, endurance, and overall performance.</p>
+    <p>Whether you're a beginner or a seasoned runner, Hit BeatRun transforms every run into an energizing and immersive journey.</p>
+    <a class="btn btn-black btn-run" href="#" data-cta>{RUN}</a>
+  </div>
+  <div class="what-right">
+    <div class="bars"><div class="bar"><i></i></div><div class="bar"><i></i></div><div class="bar"><i></i></div><div class="bar"><i></i></div></div>
+    <div class="navy-card reveal">{bg_video(R, "what-is", "poster-7bd19447.jpg")}</div>
+  </div>
+</section>
+
+<!-- ================= GETTING STARTED ================= -->
+<section class="getting"><h2 class="big-title reveal">Getting Started</h2></section>
+<section class="wrap how">
+  <figure class="reveal"><div class="shot"><img src="{R}assets/img/gs-tutorial.png" alt="HitBeatRun tutorial: song title, music video, energy boost, speed" loading="lazy"></div>
+    <h3>How HitBeatRun<br>Works?</h3>
+    <p>HitBeatRun analyzes music's beats per minute (BPM) and energy levels to guide your running pace, signaling when to speed up or slow down.</p></figure>
+  <figure class="reveal"><div class="shot"><img src="{R}assets/img/gs-gab.png" alt="Gab, creator of HitBeatRun" loading="lazy"></div>
+    <h3>The Mind Behind HitBeatRun</h3>
+    <p>As a tech geek with a passion for fitness and music, I developed HitBeatRun to blend the best of all three worlds, creating a tool that keeps you moving, motivated, and in rhythm.</p></figure>
+  <figure class="reveal"><div class="shot"><img src="{R}assets/img/gs-speeds.png" alt="Your three speed running intervals" loading="lazy"></div>
+    <h3>Unlock Your Perfect Workout</h3>
+    <p>Set up your three running speeds, and let the music guide you! With the techniques I'll teach you, you'll master how to use HitBeatRun for an incredible workout.</p></figure>
+</section>
+
+<!-- ================= SONGS ================= -->
+<section class="wrap songs" id="songs">
+  <h2 class="big-title reveal">Songs</h2>
+  <div class="song-list">{song_rows}</div>
+  <div class="cta-row"><a class="btn btn-white btn-run" href="#" data-cta>{RUN}</a></div>
 </section>
 
 <!-- ================= ATHLETE (Speakers) ================= -->
