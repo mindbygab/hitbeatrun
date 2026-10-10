@@ -9,15 +9,15 @@
 <meta property="og:description" content="HitBeatRun is a running algorithm that syncs your pace to the BPM and energy of the music. Run to the beat.">
 <meta property="og:image" content="https://hitbeatrun.com/assets/img/hero-logo.png">
 <link rel="icon" href="../assets/img/hero-logo.png">
-<link rel="stylesheet" href="../assets/css/style.css?v=3d31be1f">
+<link rel="stylesheet" href="../assets/css/style.css?v=16cd869a">
 </head>
 <body data-root="../" data-mode="landing">
 <header class="site-header">
   <a class="logo" href="https://www.mindbygab.com" target="_blank" rel="noopener" aria-label="Mind by Gab website"><img src="../assets/img/logo-mind.png" alt="Mind by Gab"></a>
   <nav class="nav" aria-label="Main">
     <a href="./" class="active">Home</a>
-    <a href="#" data-fourthwall>Log In</a>
-    <a href="./#songs">Songs</a>
+    <a href="./#what">About</a>
+    <a href="./#songs">Try It Live</a>
   </nav>
   <div class="header-right">
     <a class="btn btn-outline btn-run" href="#" data-cta>Let's Run</a>
@@ -136,18 +136,35 @@
   </div>
 </section>
 
-<!-- ================= WHAT IS ================= -->
-<section class="wrap what" id="what">
-  <div class="what-card reveal">
-    <h2>What is HitBeatRun?</h2>
-    <p>Hit BeatRun is an innovative running algorithm designed to help you harness the power of rhythm to enhance your running experience.</p>
-    <p>By syncing your steps to carefully curated beats, it creates a seamless connection between music and movement, improving your pace, endurance, and overall performance.</p>
-    <p>Whether you're a beginner or a seasoned runner, Hit BeatRun transforms every run into an energizing and immersive journey.</p>
-    <a class="btn btn-black btn-run" href="#" data-cta>Let's Run</a>
-  </div>
-  <div class="what-right">
-    <div class="bars"><div class="bar"><i></i></div><div class="bar"><i></i></div><div class="bar"><i></i></div><div class="bar"><i></i></div></div>
-    <div class="navy-card reveal"><video data-src="../assets/video/what-is.mp4" poster="../assets/img/poster-7bd19447.jpg" muted loop playsinline preload="none"></video></div>
+<!-- ================= WHAT IS (About) ================= -->
+<section class="about" id="what">
+  <div class="wrap about-grid">
+    <div class="about-copy reveal from-left">
+      <span class="eyebrow">About HitBeatRun</span>
+      <h2 class="big-title">What is <span class="grad-text">HitBeatRun?</span></h2>
+      <p class="about-lead">HitBeatRun is an innovative running algorithm designed to help you harness the power of rhythm to enhance your running experience.</p>
+      <ul class="about-points">
+        <li><span class="ap-icon"><svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></span>
+          <div><b>Steps synced to the beat</b><p>Carefully curated songs create a seamless connection between music and movement.</p></div></li>
+        <li><span class="ap-icon"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></span>
+          <div><b>Better pace and endurance</b><p>Following the music's energy improves your pace, endurance and overall performance.</p></div></li>
+        <li><span class="ap-icon"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span>
+          <div><b>Made for every runner</b><p>Beginner or seasoned runner, every run becomes an energizing and immersive journey.</p></div></li>
+      </ul>
+      <a class="btn btn-white btn-run" href="#" data-cta>Let's Run</a>
+    </div>
+    <div class="about-visual reveal from-right">
+      <div class="about-glow"></div>
+      <div class="screen">
+        <div class="screen-bar"><i></i><i></i><i></i><span>hitbeatrun &middot; live analysis</span></div>
+        <video data-src="../assets/video/what-is.mp4" poster="../assets/img/poster-7bd19447.jpg" muted loop playsinline preload="none"></video>
+      </div>
+      <div class="meter">
+        <div class="meter-head"><b>Music energy</b><span class="meter-live"><i></i>128 BPM</span></div>
+        <div class="eq" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="levels"><span class="lv lv-1">Low</span><span class="lv lv-2">Medium</span><span class="lv lv-3">Max</span></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -316,7 +333,8 @@
     <div class="fc-col">
       <h4>Explore</h4>
       <a href="./">Home</a>
-      <a href="./#songs">Songs</a>
+      <a href="./#what">About</a>
+      <a href="./#songs">Try It Live</a>
       <a href="./#join">Membership</a>
       <a href="#" data-fourthwall>Log In</a>
     </div>
@@ -336,6 +354,6 @@
     <span><a href="../legal.html#terms">Terms</a> &middot; <a href="../legal.html#privacy">Privacy</a></span>
   </div>
 </footer>
-<script src="../assets/js/main.js?v=7a117556"></script>
+<script src="../assets/js/main.js?v=09626db7"></script>
 </body>
 </html>

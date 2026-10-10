@@ -22,6 +22,25 @@ const HBR = {
     a.href = 'mailto:' + HBR.CONTACT_EMAIL; a.textContent = HBR.CONTACT_EMAIL;
   });
 
+  // Links to a section of this same page scroll smoothly instead of reloading it
+  const samePage = path => path.replace(/index\.html$/, '');
+  document.querySelectorAll('a[href*="#"]').forEach(a => {
+    if (a.hash && a.origin === location.origin && samePage(a.pathname) === samePage(location.pathname)) a.setAttribute('href', a.hash);
+  });
+
+  // Menu highlights the section on screen (Home / About / Try It Live)
+  const navLinks = [...document.querySelectorAll('.nav a')];
+  const spy = ['what', 'songs'].map(id => document.getElementById(id)).filter(Boolean);
+  if (spy.length) {
+    const setActive = () => {
+      const mid = innerHeight * 0.4;
+      const cur = spy.find(sec => { const r = sec.getBoundingClientRect(); return r.top < mid && r.bottom > mid; });
+      navLinks.forEach(a => a.classList.toggle('active', cur ? a.hash === '#' + cur.id : !a.hash));
+    };
+    addEventListener('scroll', setActive, { passive: true });
+    setActive();
+  }
+
   // Mobile menu
   const burger = document.querySelector('.burger');
   const nav = document.querySelector('.nav');
@@ -97,7 +116,7 @@ const HBR = {
   const rio = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); rio.unobserve(e.target); } });
   }, { threshold: 0.15 });
-  document.querySelectorAll('.reveal, .bars, .how-wrap').forEach(el => rio.observe(el));
+  document.querySelectorAll('.reveal, .how-wrap').forEach(el => rio.observe(el));
 
   // "How it works" cards tilt toward the mouse (desktop only)
   if (matchMedia('(hover: hover) and (prefers-reduced-motion: no-preference)').matches) {
