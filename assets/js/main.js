@@ -83,11 +83,6 @@ const HBR = {
   }, { threshold: 0.15 });
   document.querySelectorAll('.reveal, .bars').forEach(el => rio.observe(el));
 
-  // Sponsor carousel arrows
-  const track = document.querySelector('.track');
-  document.querySelector('.arrow.next')?.addEventListener('click', () => track.scrollBy({ left: 249 * 2 }));
-  document.querySelector('.arrow.prev')?.addEventListener('click', () => track.scrollBy({ left: -249 * 2 }));
-
   // Highlight "Speakers" while the athlete section is on screen
   const speakers = document.querySelector('.nav a[href$="#speakers"]');
   const home = document.querySelector('.nav a[data-home]');

@@ -219,17 +219,6 @@ h1, h2, h3, .heavy { font-family: var(--heavy); font-weight: 700; }
 .science-media { display: grid; grid-template-columns: 1fr 1fr; width: min(1200px, 100%); margin: 0 auto; }
 .science-media img, .science-media video { width: 100%; aspect-ratio: 600/405; object-fit: cover; }
 
-/* ---------- sponsors ---------- */
-.sponsors { text-align: center; padding: 90px 0 80px; }
-.sponsors .sub { font-family: var(--heavy); font-weight: 600; font-size: 16px; margin: 18px 0 40px; }
-.carousel { position: relative; }
-.track { display: flex; gap: 15px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; padding: 0 26px; }
-.track::-webkit-scrollbar { display: none; }
-.track img { width: 234px; height: 171px; object-fit: cover; border-radius: 20px; flex: none; scroll-snap-align: start; }
-.arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; border-radius: 50%; border: 0; background: #fff; color: #000; font-size: 18px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,.4); z-index: 2; }
-.arrow.prev { left: 10px; } .arrow.next { right: 10px; }
-.sponsors .btn { margin-top: 50px; }
-
 /* ---------- newsletter ---------- */
 .newsletter { position: relative; background: linear-gradient(110deg, #5e95e5 0%, #9271d0 55%, #da44c1 100%); overflow: hidden; padding: 60px 0 70px; }
 .newsletter .sphere { position: absolute; width: 700px; right: -40px; top: 50%; transform: translateY(-50%); pointer-events: none; }

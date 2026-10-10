@@ -326,18 +326,6 @@ def home_page(R, mode):
   </div>
 </section>
 
-<!-- ================= SPONSORS ================= -->
-<section class="sponsors">
-  <h2 class="big-title reveal">Sponsors &amp; Partners</h2>
-  <p class="sub">We offer a wide variety of partnership plans.</p>
-  <div class="carousel">
-    <button class="arrow prev" aria-label="Previous">&#10094;</button>
-    <div class="track">{"".join(f'<img src="{R}assets/img/sponsor-{i}.jpg" alt="Sponsor logo" loading="lazy">' for i in range(1, 9))}</div>
-    <button class="arrow next" aria-label="Next">&#10095;</button>
-  </div>
-  <a class="btn btn-outline" href="{R}become-a-sponsor.html">Become a Sponsor</a>
-</section>
-
 <!-- ================= NEWSLETTER ================= -->
 <section class="newsletter">
   <img class="sphere" src="{R}assets/img/sphere.png" alt="" loading="lazy">
