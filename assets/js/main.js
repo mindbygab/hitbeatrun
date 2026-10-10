@@ -83,15 +83,6 @@ const HBR = {
   }, { threshold: 0.15 });
   document.querySelectorAll('.reveal, .bars').forEach(el => rio.observe(el));
 
-  // Course cards (+ toggles)
-  document.querySelectorAll('.c-card button').forEach(b => {
-    b.addEventListener('click', () => {
-      const card = b.closest('.c-card');
-      card.classList.toggle('open');
-      b.setAttribute('aria-expanded', card.classList.contains('open'));
-    });
-  });
-
   // Sponsor carousel arrows
   const track = document.querySelector('.track');
   document.querySelector('.arrow.next')?.addEventListener('click', () => track.scrollBy({ left: 249 * 2 }));
