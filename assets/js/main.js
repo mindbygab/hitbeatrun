@@ -77,6 +77,22 @@ const HBR = {
     heroTop.addEventListener('mouseleave', () => { heroTop.style.setProperty('--mx', 0); heroTop.style.setProperty('--my', 0); });
   }
 
+  // Gentle scroll parallax for the phone videos
+  const par = [...document.querySelectorAll('[data-parallax]')];
+  if (par.length && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    let busy = false;
+    const move = () => {
+      busy = false;
+      par.forEach(el => {
+        if (!el.classList.contains('in')) return;
+        const r = el.getBoundingClientRect();
+        const off = (r.top + r.height / 2 - innerHeight / 2) / innerHeight;
+        el.style.transform = `translateY(${(-off * el.dataset.parallax).toFixed(1)}px)`;
+      });
+    };
+    addEventListener('scroll', () => { if (!busy) { busy = true; requestAnimationFrame(move); } }, { passive: true });
+  }
+
   // Reveal-on-scroll and the progress bars
   const rio = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); rio.unobserve(e.target); } });

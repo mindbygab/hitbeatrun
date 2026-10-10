@@ -339,23 +339,43 @@ def home_page(R, mode):
   </div>
 </section>
 
-<!-- ================= ATHLETE (Speakers) ================= -->
-<section class="wrap split" id="speakers">
-  <div class="copy reveal">
-    <h2 class="mid-title">Real-Time Performance Evaluation with an Athlete</h2>
-    <p>We tested HitBeatRun with an indoor cycling instructor from Mixed Cycling Arts, evaluating its real-time performance. The algorithm seamlessly adjusted workout speed based on music energy, resulting in optimized performance and a more immersive training experience. This confirms the power of AI in enhancing fitness.</p>
-    <a class="btn btn-white" href="#science">Learn More</a>
+<!-- ================= PROOF: ATHLETE + AI ================= -->
+<section class="proof" id="speakers">
+  <div class="wrap split">
+    <div class="copy reveal from-left">
+      <span class="eyebrow">Real-world test</span>
+      <h2 class="mid-title">Real-Time Performance Evaluation with an <span class="grad-text">Athlete</span></h2>
+      <p>We tested HitBeatRun with an indoor cycling instructor from Mixed Cycling Arts, evaluating its real-time performance. The algorithm adjusted workout speed to the music's energy, resulting in optimized performance and a more immersive training experience.</p>
+      <ul class="proof-facts">
+        <li><b>Live</b><span>speed changes on the beat</span></li>
+        <li><b>Pro</b><span>indoor cycling instructor</span></li>
+      </ul>
+      <a class="btn btn-white btn-run" href="#" data-cta>{RUN}</a>
+    </div>
+    <div class="phone-stage reveal from-right" data-parallax="40">
+      <div class="phone-ring"></div>
+      <div class="phone">{bg_video(R, "athlete-eval", "poster-90e08844.jpg")}<span class="live-badge"><i></i>Live test</span></div>
+      <div class="float-chip fc-a"><b>&uarr; Energy rising</b><span>Speed up to MAX</span></div>
+    </div>
   </div>
-  <div class="phone reveal">{bg_video(R, "athlete-eval", "poster-90e08844.jpg")}</div>
-</section>
 
-<!-- ================= AI & COMPUTER VISION ================= -->
-<section class="wrap split rev">
-  <div class="phone reveal">{bg_video(R, "ai-vision", "poster-67e72562.jpg")}</div>
-  <div class="copy reveal">
-    <h2 class="mid-title">AI &amp; Computer Vision in Action</h2>
-    <p>By processing audio data through motion tracking, feature extraction, and image segmentation, the algorithm detects energy shifts in songs and translates them into real-time speed adjustments. This innovation ensures a fully immersive and efficient HIIT experience, seamlessly syncing your movement with the beat.</p>
-    <a class="btn btn-white" href="#science">Learn More</a>
+  <div class="wrap split rev">
+    <div class="phone-stage reveal from-left" data-parallax="40">
+      <div class="phone-ring ring-b"></div>
+      <div class="phone">{bg_video(R, "ai-vision", "poster-67e72562.jpg")}<span class="live-badge"><i></i>AI analysis</span></div>
+      <div class="float-chip fc-b"><b>Energy shift detected</b><span>Drop in 4 beats</span></div>
+    </div>
+    <div class="copy reveal from-right">
+      <span class="eyebrow">The technology</span>
+      <h2 class="mid-title">AI &amp; Computer Vision <span class="grad-text">in Action</span></h2>
+      <p>The algorithm processes each song to detect its energy shifts and turns them into real-time speed cues, so your movement stays in sync with the beat for an immersive, efficient HIIT run.</p>
+      <ol class="pipeline">
+        <li><span>01</span>Motion tracking</li>
+        <li><span>02</span>Feature extraction</li>
+        <li><span>03</span>Image segmentation</li>
+      </ol>
+      <a class="btn btn-outline" href="#science">See the science &rarr;</a>
+    </div>
   </div>
 </section>
 
