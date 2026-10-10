@@ -270,18 +270,49 @@ def home_page(R, mode):
   </div>
 </section>
 
-<!-- ================= GETTING STARTED ================= -->
-<section class="getting"><h2 class="big-title reveal">Getting Started</h2></section>
-<section class="wrap how">
-  <figure class="reveal"><div class="shot"><img src="{R}assets/img/gs-tutorial.png" alt="HitBeatRun tutorial: song title, music video, energy boost, speed" loading="lazy"></div>
-    <h3>How HitBeatRun<br>Works?</h3>
-    <p>HitBeatRun analyzes music's beats per minute (BPM) and energy levels to guide your running pace, signaling when to speed up or slow down.</p></figure>
-  <figure class="reveal"><div class="shot"><img src="{R}assets/img/gs-gab.png" alt="Gab, creator of HitBeatRun" loading="lazy"></div>
-    <h3>The Mind Behind HitBeatRun</h3>
-    <p>As a tech geek with a passion for fitness and music, I developed HitBeatRun to blend the best of all three worlds, creating a tool that keeps you moving, motivated, and in rhythm.</p></figure>
-  <figure class="reveal"><div class="shot"><img src="{R}assets/img/gs-speeds.png" alt="Your three speed running intervals" loading="lazy"></div>
-    <h3>Unlock Your Perfect Workout</h3>
-    <p>Set up your three running speeds, and let the music guide you! With the techniques I'll teach you, you'll master how to use HitBeatRun for an incredible workout.</p></figure>
+<!-- ================= HOW IT WORKS ================= -->
+<section class="how-sec" id="how">
+  <div class="wrap how-head reveal">
+    <span class="eyebrow">Getting started</span>
+    <h2 class="big-title">How <span class="grad-text">HitBeatRun</span> Works</h2>
+    <p class="lead">The music sets the pace. You just run.</p>
+  </div>
+  <div class="wrap how-wrap">
+    <svg class="beatline" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true">
+      <defs><linearGradient id="bl" x1="0" x2="1"><stop offset="0" stop-color="#5e95e5"/><stop offset=".5" stop-color="#9271d0"/><stop offset="1" stop-color="#da44c1"/></linearGradient></defs>
+      <path class="bl-base" pathLength="1" d="M0 60 H170 l18 -42 l22 86 l20 -64 l14 20 H560 l18 -48 l22 96 l20 -72 l14 24 H950 l18 -42 l22 86 l20 -64 l14 20 H1200"/>
+      <path class="bl-pulse" pathLength="1" d="M0 60 H170 l18 -42 l22 86 l20 -64 l14 20 H560 l18 -48 l22 96 l20 -72 l14 24 H950 l18 -42 l22 86 l20 -64 l14 20 H1200"/>
+    </svg>
+    <div class="steps">
+      <figure class="step reveal">
+        <div class="step-in">
+          <span class="step-num">01</span>
+          <div class="shot"><img src="{R}assets/img/gs-tutorial.png" alt="HitBeatRun tutorial: song title, music video, energy boost and speed" loading="lazy"></div>
+          <span class="step-tag">The music leads</span>
+          <h3>Follow the beat</h3>
+          <p>HitBeatRun analyzes each song's beats per minute (BPM) and energy levels to guide your pace, signaling when to speed up or slow down.</p>
+        </div>
+      </figure>
+      <figure class="step reveal">
+        <div class="step-in">
+          <span class="step-num">02</span>
+          <div class="shot"><img src="{R}assets/img/gs-speeds.png" alt="Your three speed running intervals: 6.5, 7.5 and 8.5 mph" loading="lazy"></div>
+          <span class="step-tag">Your perfect workout</span>
+          <h3>Set your three speeds</h3>
+          <p>Choose your low, medium and max speeds and let the music guide you. With the techniques I'll teach you, every run becomes an incredible workout.</p>
+        </div>
+      </figure>
+      <figure class="step reveal">
+        <div class="step-in">
+          <span class="step-num">03</span>
+          <div class="shot"><img src="{R}assets/img/gs-gab.png" alt="Gab, creator of HitBeatRun" loading="lazy"></div>
+          <span class="step-tag">The mind behind HitBeatRun</span>
+          <h3>Built by a runner who codes</h3>
+          <p>As a tech geek with a passion for fitness and music, I built HitBeatRun to blend all three worlds into a tool that keeps you moving, motivated and in rhythm.</p>
+        </div>
+      </figure>
+    </div>
+  </div>
 </section>
 
 <!-- ================= SONGS ================= -->

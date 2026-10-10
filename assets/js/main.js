@@ -81,7 +81,19 @@ const HBR = {
   const rio = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); rio.unobserve(e.target); } });
   }, { threshold: 0.15 });
-  document.querySelectorAll('.reveal, .bars').forEach(el => rio.observe(el));
+  document.querySelectorAll('.reveal, .bars, .how-wrap').forEach(el => rio.observe(el));
+
+  // "How it works" cards tilt toward the mouse (desktop only)
+  if (matchMedia('(hover: hover) and (prefers-reduced-motion: no-preference)').matches) {
+    document.querySelectorAll('.step').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const r = card.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+        card.style.transform = `rotateY(${x * 10}deg) rotateX(${-y * 10}deg) translateY(-6px)`;
+      });
+      card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+    });
+  }
 
   // Highlight "Speakers" while the athlete section is on screen
   const speakers = document.querySelector('.nav a[href$="#speakers"]');
