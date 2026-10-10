@@ -94,7 +94,7 @@ const HBR = {
     }, { threshold: 0.4 }).observe(sec);
   }
 
-  // Forms (newsletter + sponsor)
+  // Newsletter form
   document.querySelectorAll('form[data-form]').forEach(form => {
     form.addEventListener('submit', async ev => {
       ev.preventDefault();

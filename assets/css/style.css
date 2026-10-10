@@ -263,7 +263,6 @@ h1, h2, h3, .heavy { font-family: var(--heavy); font-weight: 700; }
 .f-nav .legal { margin-top: auto; padding-top: 24px; }
 .f-nav .legal a { display: block; font-family: var(--heavy); font-weight: 700; font-size: 14px; line-height: 1.2; }
 .f-nav .legal a { color: rgba(255,255,255,.85); }
-.f-nav .legal .btn { margin-top: 22px; color: #000; background: #fff; border-color: #fff; }
 .f-mid { display: grid; grid-template-rows: 389px 124px; gap: 30px; }
 .f-tickets { background: linear-gradient(160deg, #da44c1, #9271d0 60%, #5e95e5); border-radius: 50px; display: grid; place-items: center; padding: 30px; }
 .f-tickets a { width: 210px; height: 329px; border: 1.5px solid #fff; border-radius: 900px; display: flex; align-items: center; justify-content: center; gap: 8px; color: #fff; font-family: var(--heavy); font-weight: 700; font-size: 16px; transition: background .2s; }
@@ -292,11 +291,6 @@ h1, h2, h3, .heavy { font-family: var(--heavy); font-weight: 700; }
 
 /* ---------- simple pages ---------- */
 .page { padding: 80px 0 100px; }
-.form-card { background: #fff; color: #000; border-radius: 25px; padding: 36px; width: min(640px, 100%); margin: 40px auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-.form-card label { font-family: var(--heavy); font-weight: 600; font-size: 14px; display: grid; gap: 6px; }
-.form-card input, .form-card textarea { border: 1px solid #000; border-radius: 6px; padding: 10px 12px; font: inherit; font-size: 16px; }
-.form-card .full { grid-column: 1 / -1; }
-.form-card button { grid-column: 1 / -1; height: 46px; border-radius: 100px; border: 0; background: #000; color: #fff; font-family: var(--heavy); font-weight: 700; font-size: 15px; cursor: pointer; }
 
 /* ---------- reveal ---------- */
 .reveal { opacity: 0; transform: translateY(32px); transition: opacity .6s ease, transform .6s ease; }
@@ -344,8 +338,7 @@ h1, h2, h3, .heavy { font-family: var(--heavy); font-weight: 700; }
   .pill { padding: 8px 18px; }
   .s-energy { left: 6%; top: 300px; } .s-energy .float-icon { width: 56px; }
   .s-watch { right: 6%; top: 440px; } .s-watch .float-icon { width: 46px; }
-  .form-card { grid-template-columns: 1fr; padding: 24px; }
-  /* hero on phones: tags sit above the title instead of on top of it */
+    /* hero on phones: tags sit above the title instead of on top of it */
   .hero { padding-top: 84px; }
   .hero h1 { padding-top: 30px; }
   .hero .tagline { font-size: 30px; padding: 0 12px; }

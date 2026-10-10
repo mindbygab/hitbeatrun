@@ -7,7 +7,7 @@ Outputs (relative to the site root):
     index.html                 main site (hitbeatrun.com)
     subscribe/index.html       Fourthwall subscription landing page (same design)
     songs/index.html, songs/<slug>.html
-    become-a-sponsor.html, terms-and-conditions.html, privacy-policy.html,
+    terms-and-conditions.html, privacy-policy.html,
     refund-policy.html, accessibility-statement.html
 """
 from html import escape
@@ -96,7 +96,6 @@ def footer(R, mode):
         <a href="{R}privacy-policy.html">Privacy Policy</a>
         <a href="{R}refund-policy.html">Refund Policy</a>
         <a href="{R}accessibility-statement.html">Accessibility statement</a>
-        <a class="btn btn-black" href="{R}become-a-sponsor.html">Become a Sponsor</a>
       </div>
     </div>
     <div class="f-mid">
@@ -376,25 +375,6 @@ def songs_index(R):
 """ + footer(R, "main")
 
 
-def sponsor_page(R):
-    return head(R, "Become a Sponsor | HitBeatRun", "Partner with HitBeatRun.") + f"""
-<body data-root="{R}" data-mode="main">
-{header(R, "main", home_active=False)}
-<main class="wrap page">
-  <h1 class="big-title">Become<br>a Sponsor</h1>
-  <form class="form-card" data-form="Sponsor request">
-    <label>First name *<input name="first_name" required></label>
-    <label>Last name *<input name="last_name" required></label>
-    <label class="full">Company name<input name="company"></label>
-    <label class="full">Email *<input name="email" type="email" required></label>
-    <label class="full">Notes<textarea name="notes" rows="4"></textarea></label>
-    <button type="submit">Submit</button>
-    <p class="form-msg full" role="status"></p>
-  </form>
-</main>
-""" + footer(R, "main")
-
-
 LEGAL = {
     "terms-and-conditions": ("Terms &amp; Conditions", [
         "By using hitbeatrun.com you agree to these terms. The HitBeatRun videos, course material, research and the HitBeatRun algorithm are the property of Mind by Gab and are provided for personal, non-commercial use.",
@@ -403,7 +383,7 @@ LEGAL = {
         "We may update these terms from time to time. Questions? Contact us at the email address in the footer.",
     ]),
     "privacy-policy": ("Privacy Policy", [
-        "We only collect the information you choose to send us, such as your email address when you subscribe to the newsletter or contact us about sponsorship.",
+        "We only collect the information you choose to send us, such as your email address when you subscribe to the newsletter or email us.",
         "We use it to reply to you and to send the newsletter you asked for. We never sell your personal information. You can unsubscribe or ask us to delete your data at any time by emailing us.",
         "Payments and memberships are handled by Fourthwall, which has its own privacy policy.",
     ]),
@@ -441,6 +421,5 @@ if __name__ == "__main__":
     write("songs/index.html", songs_index("../"))
     for i, s in enumerate(SONGS):
         write(f"songs/{s[0]}.html", song_page("../", i))
-    write("become-a-sponsor.html", sponsor_page(""))
     for slug in LEGAL:
         write(f"{slug}.html", legal_page("", slug))
