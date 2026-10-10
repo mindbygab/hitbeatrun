@@ -79,41 +79,36 @@ def header(R, mode, home_active=True):
 
 
 def footer(R, mode):
-    L = LABELS[mode]
     home = f"{R}index.html" if mode == "main" else "./"
-    song_links = "".join(f'<a href="{R}songs/{s[0]}.html">{escape(s[5])}</a>' for s in SONGS)
+    words = ["Run to the beat", "128 BPM", "Speed ramps", "New songs", "Low · Medium · Max", "Feel the drop"]
+    marquee = "".join(f"<span>{w}</span><i>&#10022;</i>" for w in words) * 2
     return f"""<footer class="site-footer">
-  <div class="foot">
-    <div class="f-nav">
-      <div class="badge"><img src="{R}assets/img/icon-x.png" alt=""></div>
-      <nav>
-        <a href="{home}">Home</a>
-        <details><summary>Songs <span>&#8964;</span></summary>{song_links}</details>
-        <a href="{home}#speakers">Speakers</a>
-      </nav>
-      <div class="legal">
-        <a href="{R}terms-and-conditions.html">Terms &amp; Conditions</a>
-        <a href="{R}privacy-policy.html">Privacy Policy</a>
-        <a href="{R}refund-policy.html">Refund Policy</a>
-        <a href="{R}accessibility-statement.html">Accessibility statement</a>
-      </div>
+  <div class="marquee" aria-hidden="true"><div class="mq-track">{marquee}</div></div>
+  <div class="foot-cta reveal">
+    <span class="eyebrow">Join HitBeatRun</span>
+    <h2>Your next run is<br><span class="grad-text">one beat away.</span></h2>
+    <p>Every song, speed ramp and run-along video for <b>$4.99/month</b>. Cancel anytime.</p>
+    <a class="btn btn-white btn-run btn-big" href="#" data-cta>{RUN}</a>
+  </div>
+  <form class="news-strip" data-form="Newsletter">
+    <div class="ns-text"><b>Not ready yet?</b> Get new songs and running tips by email.</div>
+    <div class="ns-field"><input type="email" name="email" placeholder="Your email" required aria-label="Your email"><button type="submit">Sign up</button></div>
+    <p class="form-msg" role="status"></p>
+  </form>
+  <div class="foot-bottom">
+    <a class="logo" href="{home}" aria-label="Home"><img src="{R}assets/img/logo-mind.png" alt="Mind by Gab"></a>
+    <nav class="fb-links" aria-label="Footer">
+      <a href="{home}">Home</a><a href="{R}songs/">Songs</a><a href="{home}#speakers">Speakers</a><a href="{home}#join">Membership</a>
+    </nav>
+    <div class="fb-social">
+      <a href="https://www.facebook.com/hitbeatrun" target="_blank" rel="noopener" aria-label="HitBeatRun on Facebook"><svg viewBox="0 0 24 24"><path d="M14 8.5V6.8c0-.8.2-1.3 1.4-1.3H17V2.6c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4.1v1.9H8v3.2h2.6V21H14v-9.3h2.6l.4-3.2z"/></svg></a>
+      <a href="https://www.instagram.com/hitbeatrun" target="_blank" rel="noopener" aria-label="HitBeatRun on Instagram"><svg viewBox="0 0 24 24"><path d="M12 7.3A4.7 4.7 0 1 0 12 16.7 4.7 4.7 0 0 0 12 7.3zm0 7.7a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm4.9-8.9a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2zM21.9 7.6c-.1-1.6-.4-3-1.6-4.2S17.7 1.9 16.1 1.8C14.5 1.7 9.5 1.7 7.9 1.8 6.3 1.9 4.9 2.2 3.7 3.4S2.1 6 2 7.6c-.1 1.6-.1 6.6 0 8.2.1 1.6.4 3 1.6 4.2s2.6 1.5 4.2 1.6c1.6.1 6.6.1 8.2 0 1.6-.1 3-.4 4.2-1.6s1.5-2.6 1.6-4.2c.2-1.6.2-6.6.1-8.2zm-2.1 9.9a3.2 3.2 0 0 1-1.8 1.8c-1.3.5-4.3.4-5.7.4s-4.4.1-5.7-.4a3.2 3.2 0 0 1-1.8-1.8c-.5-1.3-.4-4.3-.4-5.7s-.1-4.4.4-5.7A3.2 3.2 0 0 1 6.6 4.3c1.3-.5 4.3-.4 5.7-.4s4.4-.1 5.7.4a3.2 3.2 0 0 1 1.8 1.8c.5 1.3.4 4.3.4 5.7s.1 4.4-.4 5.7z"/></svg></a>
     </div>
-    <div class="f-mid">
-      <div class="f-tickets"><a href="#" data-cta><span>&#8853;</span> {L['buy']}</a></div>
-      <div class="f-social">
-        <a href="https://www.facebook.com/hitbeatrun" target="_blank" rel="noopener" aria-label="HitBeatRun on Facebook"><svg viewBox="0 0 24 24"><path d="M14 8.5V6.8c0-.8.2-1.3 1.4-1.3H17V2.6c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4.1v1.9H8v3.2h2.6V21H14v-9.3h2.6l.4-3.2z"/></svg></a>
-        <a href="https://www.instagram.com/hitbeatrun" target="_blank" rel="noopener" aria-label="HitBeatRun on Instagram"><svg viewBox="0 0 24 24"><path d="M12 7.3A4.7 4.7 0 1 0 12 16.7 4.7 4.7 0 0 0 12 7.3zm0 7.7a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm4.9-8.9a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2zM21.9 7.6c-.1-1.6-.4-3-1.6-4.2S17.7 1.9 16.1 1.8C14.5 1.7 9.5 1.7 7.9 1.8 6.3 1.9 4.9 2.2 3.7 3.4S2.1 6 2 7.6c-.1 1.6-.1 6.6 0 8.2.1 1.6.4 3 1.6 4.2s2.6 1.5 4.2 1.6c1.6.1 6.6.1 8.2 0 1.6-.1 3-.4 4.2-1.6s1.5-2.6 1.6-4.2c.2-1.6.2-6.6.1-8.2zm-2.1 9.9a3.2 3.2 0 0 1-1.8 1.8c-1.3.5-4.3.4-5.7.4s-4.4.1-5.7-.4a3.2 3.2 0 0 1-1.8-1.8c-.5-1.3-.4-4.3-.4-5.7s-.1-4.4.4-5.7A3.2 3.2 0 0 1 6.6 4.3c1.3-.5 4.3-.4 5.7-.4s4.4-.1 5.7.4a3.2 3.2 0 0 1 1.8 1.8c.5 1.3.4 4.3.4 5.7s.1 4.4-.4 5.7z"/></svg></a>
-      </div>
-    </div>
-    <div class="f-contact">
-      <h3>Contact Us</h3>
-      <p>For any questions please e-mail<br><a href="#" data-email></a></p>
-      <img class="c-img" src="{R}assets/img/footer-c.png" alt="">
-      <div class="bottom">
-        <p>HitBeatRun<br>Running to the Beat</p>
-        <p>&copy; 2026 HitBeatRun by Mind by Gab.</p>
-      </div>
-    </div>
+  </div>
+  <div class="foot-legal">
+    <span>&copy; 2026 HitBeatRun by Mind by Gab</span>
+    <a href="#" data-email></a>
+    <a href="{R}terms-and-conditions.html">Terms</a><a href="{R}privacy-policy.html">Privacy</a><a href="{R}refund-policy.html">Refunds</a><a href="{R}accessibility-statement.html">Accessibility</a>
   </div>
 </footer>
 <script src="{R}assets/js/main.js?v={ver("assets/js/main.js")}"></script>
@@ -344,30 +339,23 @@ def home_page(R, mode):
 
 <!-- ================= SCIENCE ================= -->
 <section class="science" id="science">
-  <div class="wrap reveal">
-    <h2 class="mid-title">The Science behind the beat</h2>
-    <p>Explore the in-depth findings behind the HitBeatRun algorithm with our comprehensive research paper. It details the development process, the use of AI and computer vision, and the results of performance evaluations with real athletes. Gain insights into how music energy synchronization can revolutionize workouts and enhance fitness outcomes.</p>
-    <p><b>Click below to access the full paper and dive into the technology that&rsquo;s changing the way we train!</b></p>
-    <a class="btn btn-grey" href="{R}assets/docs/HitBeatRun-Research-Paper.pdf" target="_blank" rel="noopener">Download it!</a>
-  </div>
-  <div class="science-media">
-    <img src="{R}assets/img/research-paper.png" alt="New! Research Paper: Harmonizing Heartbeats" loading="lazy">
-    {bg_video(R, "science-runner", "poster-b87224ec.jpg")}
-  </div>
-</section>
-
-<!-- ================= NEWSLETTER ================= -->
-<section class="newsletter">
-  <img class="sphere" src="{R}assets/img/sphere.png" alt="" loading="lazy">
-  <div class="wrap">
-    <form class="news-card" data-form="Newsletter">
-      <h2>Subscribe to our newsletter</h2>
-      <label for="nl-email">Email *</label>
-      <input id="nl-email" name="email" type="email" required>
-      <label class="check"><input type="checkbox" name="subscribe" value="yes" required> Yes, subscribe me to your newsletter.</label>
-      <button type="submit">Submit</button>
-      <p class="form-msg" role="status"></p>
-    </form>
+  <div class="sci-card reveal">
+    <div class="sci-bg">{bg_video(R, "science-runner", "poster-b87224ec.jpg")}</div>
+    <div class="sci-copy">
+      <span class="eyebrow">Research</span>
+      <h2>The Science<br>behind <span class="grad-text">the beat</span></h2>
+      <p>Explore the in-depth findings behind the HitBeatRun algorithm: how it was built, how AI and computer vision read the music, and how real athletes performed when their speed followed the song's energy.</p>
+      <ul class="sci-points">
+        <li><b>AI</b><span>&amp; computer vision</span></li>
+        <li><b>BPM</b><span>&amp; energy detection</span></li>
+        <li><b>Real</b><span>athlete testing</span></li>
+      </ul>
+      <div class="sci-btns">
+        <a class="btn btn-white" href="{R}assets/docs/HitBeatRun-Research-Paper.pdf" target="_blank" rel="noopener">Download the paper</a>
+        <a class="btn btn-outline btn-run" href="#" data-cta>{RUN}</a>
+      </div>
+    </div>
+    <div class="sci-paper"><img src="{R}assets/img/research-paper.png" alt="New! Research Paper: Harmonizing Heartbeats" loading="lazy"></div>
   </div>
 </section>
 
