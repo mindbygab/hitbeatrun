@@ -509,3 +509,12 @@ if __name__ == "__main__":
     for i, s in enumerate(SONGS):
         write(f"songs/{s[0]}.html", song_page("../", i))
     write("legal.html", legal_page(""))
+    # hitbeatrun.com/supporters -> Fourthwall (after Fourthwall moves to members.hitbeatrun.com)
+    fw = "https://members.hitbeatrun.com/supporters"
+    write("supporters/index.html", f"""<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>HitBeatRun membership</title>
+<meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url={fw}">
+<link rel="canonical" href="{fw}"><script>location.replace("{fw}" + location.search);</script></head>
+<body style="background:#000;color:#fff;font-family:sans-serif;text-align:center;padding:60px">
+<p>Taking you to HitBeatRun membership&hellip; <a style="color:#da44c1" href="{fw}">Continue</a></p></body></html>
+""")
