@@ -27,9 +27,10 @@ SONGS = [
     ("bring-me-joy", "Bring Me Joy", "Rudimental & Karen Harding", "cover-bringmejoy.jpg", "song-bring-me-joy", "Bring Me Joy - Rudimental, Karen Harding"),
 ]
 
+RUN = "Let's Run"
 LABELS = {
-    "main": {"tickets": "Tickets", "get": "Get Tickets", "buy": "Buy Tickets Now"},
-    "landing": {"tickets": "Subscribe", "get": "Subscribe Now", "buy": "Subscribe Now"},
+    "main": {"tickets": RUN, "get": RUN, "buy": RUN},
+    "landing": {"tickets": RUN, "get": RUN, "buy": RUN},
 }
 
 CURSOR = ('<svg class="cursor" style="{style}" viewBox="0 0 24 24" fill="none" stroke="{color}" stroke-width="2" '
@@ -65,7 +66,7 @@ def header(R, mode, home_active=True):
   </nav>
   <div class="header-right">
     <a class="login" href="#" data-fourthwall>Log In</a>
-    <a class="btn btn-outline" href="#" data-cta>{L['tickets']}</a>
+    <a class="btn btn-outline btn-run" href="#" data-cta>{L['tickets']}</a>
     <button class="burger" aria-label="Menu">&#9776;</button>
   </div>
 </header>"""
@@ -167,7 +168,14 @@ def home_page(R, mode):
     <article class="stack-card"><header class="g4"><img src="{R}assets/img/icon-344.png" alt=""><h2>New Songs Analyzed with<br>HITBEATRUN Algorithm</h2></header>
       {bg_video(R, "hero-newsongs", "poster-061d9c62.jpg")}</article>
   </div>
-  <div class="hero-cta"><a class="btn btn-white" href="#" data-cta>{L['get']}</a></div>
+  <div class="hero-cta"><a class="btn btn-white btn-run" href="#" data-cta>{L['get']}</a></div>
+</section>
+
+<!-- ================= RUN BANNER ================= -->
+<section class="run-banner reveal">
+  <h2>Ready to transform your running game?</h2>
+  <p>Learn how to set your running speeds, sync with the energy of the music, and optimize every workout for maximum results.</p>
+  <a class="btn btn-black btn-run" href="#" data-cta>{RUN}</a>
 </section>
 
 <!-- ================= WHAT IS ================= -->
@@ -177,7 +185,7 @@ def home_page(R, mode):
     <p>Hit BeatRun is an innovative running algorithm designed to help you harness the power of rhythm to enhance your running experience.</p>
     <p>By syncing your steps to carefully curated beats, it creates a seamless connection between music and movement, improving your pace, endurance, and overall performance.</p>
     <p>Whether you're a beginner or a seasoned runner, Hit BeatRun transforms every run into an energizing and immersive journey.</p>
-    <a class="btn btn-black" href="#" data-cta>Let's start!</a>
+    <a class="btn btn-black btn-run" href="#" data-cta>{RUN}</a>
   </div>
   <div class="what-right">
     <div class="bars"><div class="bar"><i></i></div><div class="bar"><i></i></div><div class="bar"><i></i></div><div class="bar"><i></i></div></div>
@@ -203,6 +211,7 @@ def home_page(R, mode):
 <section class="wrap songs" id="songs">
   <h2 class="big-title reveal">Songs</h2>
   <div class="song-list">{song_rows}</div>
+  <div class="cta-row"><a class="btn btn-white btn-run" href="#" data-cta>{RUN}</a></div>
 </section>
 
 <!-- ================= COURSE ================= -->
@@ -224,6 +233,7 @@ def home_page(R, mode):
       <div class="panel cg4"><div class="row"><b>Practice</b><button aria-label="More" aria-expanded="false">+</button></div>
       <p>Learn to adjust your pace based on energy shifts and optimize your performance with step-by-step instructions.</p></div></div>
   </div>
+  <div class="cta-row"><a class="btn btn-white btn-run" href="#" data-cta>{RUN}</a></div>
 </section>
 
 <!-- ================= ATHLETE (Speakers) ================= -->

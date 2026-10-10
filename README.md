@@ -12,7 +12,8 @@ No Wix, no hosting bill.
 
 ## 1. Set your links (once)
 Open `assets/js/main.js` and edit the three values at the top:
-- `FOURTHWALL_URL` – your Fourthwall subscription page
+- `FOURTHWALL_URL` – where every "Let's Run" button goes (now https://hitbeatrun.com/supporters)
+- `FOURTHWALL_HOME` – your Fourthwall shop (used by "Log In")
 - `CONTACT_EMAIL` – shown in the footer, receives form messages
 - `FORM_ENDPOINT` – optional (e.g. a free Formspree form) so the newsletter/sponsor forms submit without opening the visitor's email app
 

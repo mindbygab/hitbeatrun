@@ -2,8 +2,10 @@
    HitBeatRun — site settings. Edit these three values.
    ============================================================ */
 const HBR = {
-  // Your Fourthwall subscription / membership page
-  FOURTHWALL_URL: 'https://hitbeatrun.fourthwall.com',
+  // Your Fourthwall subscription / membership page (every "Let's Run" button goes here)
+  FOURTHWALL_URL: 'https://hitbeatrun.com/supporters',
+  // Your Fourthwall shop home (used by "Log In")
+  FOURTHWALL_HOME: 'https://hitbeatrun.com',
   // Shown in the footer and used by the forms when no FORM_ENDPOINT is set
   CONTACT_EMAIL: 'info@hitbeatrun.com',
   // Optional: a Formspree / Getform / Basin URL so forms submit without opening email
@@ -12,18 +14,10 @@ const HBR = {
 
 (() => {
   const body = document.body;
-  const root = body.dataset.root || '';
-  const isLanding = body.dataset.mode === 'landing';
 
-  // CTA wiring: on the main site "Tickets" buttons go to the subscription landing page;
-  // on the landing page they go straight to Fourthwall.
-  document.querySelectorAll('[data-cta]').forEach(a => {
-    a.href = isLanding ? HBR.FOURTHWALL_URL : root + 'subscribe/';
-    if (isLanding) { a.target = '_blank'; a.rel = 'noopener'; }
-  });
-  document.querySelectorAll('[data-fourthwall]').forEach(a => {
-    a.href = HBR.FOURTHWALL_URL; a.target = '_blank'; a.rel = 'noopener';
-  });
+  // Every "Let's Run" button goes to the Fourthwall subscription page
+  document.querySelectorAll('[data-cta]').forEach(a => { a.href = HBR.FOURTHWALL_URL; });
+  document.querySelectorAll('[data-fourthwall]').forEach(a => { a.href = HBR.FOURTHWALL_HOME; });
   document.querySelectorAll('[data-email]').forEach(a => {
     a.href = 'mailto:' + HBR.CONTACT_EMAIL; a.textContent = HBR.CONTACT_EMAIL;
   });
@@ -45,6 +39,32 @@ const HBR = {
     });
   }, { rootMargin: '200px' });
   vids.forEach(v => vio.observe(v));
+
+  // Hero card stack (same effect as Wix): each card slides up, grows from 88% to 100%
+  // and fades its video in, landing exactly on top of the previous one; the finished
+  // pile then scrolls away together.
+  const cards = [...document.querySelectorAll('.stack-card')];
+  if (cards.length && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const vidOf = cards.map(c => c.querySelector('video'));
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      const vh = innerHeight;
+      cards.forEach((card, i) => {
+        if (i === 0) return;
+        const stickTop = parseFloat(getComputedStyle(card).top);
+        const top = card.getBoundingClientRect().top;
+        const p = Math.min(1, Math.max(0, 1 - (top - stickTop) / (vh - stickTop)));
+        const e = 1 - Math.pow(1 - p, 3);
+        card.style.transform = `scale(${0.88 + 0.12 * e})`;
+        if (vidOf[i]) vidOf[i].style.opacity = Math.min(1, p * 1.6).toFixed(3);
+      });
+    };
+    const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+    addEventListener('scroll', onScroll, { passive: true });
+    addEventListener('resize', onScroll);
+    update();
+  }
 
   // Reveal-on-scroll and the progress bars
   const rio = new IntersectionObserver(entries => {
