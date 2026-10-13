@@ -7,7 +7,7 @@ Outputs (relative to the site root):
     index.html                 main site (hitbeatrun.com)
     subscribe/index.html       Fourthwall subscription landing page (same design)
     songs/index.html, songs/<slug>.html
-    legal.html (Terms of Service + Privacy Policy)
+    legal.html (forwards to the Terms / Privacy pages on Fourthwall)
 """
 from html import escape
 from pathlib import Path
@@ -112,8 +112,8 @@ def footer(R, mode):
     </div>
     <div class="fc-col">
       <h4>Legal</h4>
-      <a href="{R}legal.html#terms">Terms of Service</a>
-      <a href="{R}legal.html#privacy">Privacy Policy</a>
+      <a href="https://members-hitbeatrun-shop.fourthwall.com/pages/terms-of-service" target="_blank" rel="noopener">Terms of Service</a>
+      <a href="https://members-hitbeatrun-shop.fourthwall.com/pages/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>
     </div>
     <div class="fc-col">
       <h4>Contact Us</h4>
@@ -123,7 +123,7 @@ def footer(R, mode):
   </div>
   <div class="foot-legal">
     <span>&copy; 2026 HitBeatRun by <a class="mg-link" href="https://www.mindbygab.com" target="_blank" rel="noopener">Mind by Gab</a>. All rights reserved.</span>
-    <span><a href="{R}legal.html#terms">Terms</a> &middot; <a href="{R}legal.html#privacy">Privacy</a></span>
+    <span><a href="https://members-hitbeatrun-shop.fourthwall.com/pages/terms-of-service" target="_blank" rel="noopener">Terms</a> &middot; <a href="https://members-hitbeatrun-shop.fourthwall.com/pages/privacy-policy" target="_blank" rel="noopener">Privacy</a></span>
   </div>
 </footer>
 <script src="{R}assets/js/main.js?v={ver("assets/js/main.js")}"></script>
@@ -469,46 +469,6 @@ def songs_index(R):
 """ + footer(R, "main")
 
 
-TERMS = [
-    ("About HitBeatRun", "HitBeatRun (hitbeatrun.com) is run by Mind by Gab. HitBeatRun provides pre-recorded running videos with on-screen speed cues timed to the music. The videos are a guide: you choose and control your own low, medium and max speeds on your treadmill or outdoors."),
-    ("Membership and billing", "Members-only videos are offered through a paid membership (currently $4.99 per month) that is sold, billed and delivered through Fourthwall. By subscribing you also agree to Fourthwall's terms. Your membership renews automatically each month until you cancel. You can cancel at any time from your Fourthwall account; you keep access until the end of the period you already paid for."),
-    ("Refunds", "Because members get immediate access to digital content, payments are generally non-refundable. If you were charged in error or have a billing problem, contact us within 14 days and we will make it right."),
-    ("Your health and safety", "Running and interval training are physically demanding. Consult a doctor before starting any new exercise program, especially if you have a medical condition. Only run at speeds that are safe for you, use treadmill safety features, and stop immediately if you feel pain, dizziness or shortness of breath. HitBeatRun is not medical advice, and you exercise at your own risk."),
-    ("Your account and our content", "Membership is for one person's personal, non-commercial use. HitBeatRun videos, speed cues, course material, research and branding belong to Mind by Gab. Please don't download, copy, share, resell or publicly show members-only videos, or share your login. We may suspend access for accounts that break these terms."),
-    ("Music", "Songs featured in HitBeatRun videos belong to their respective artists and rights holders. Their use in HitBeatRun does not mean they endorse HitBeatRun."),
-    ("Changes and limits", "We may update HitBeatRun, its videos, pricing or these terms over time; we will post changes on this page. To the extent allowed by law, HitBeatRun is provided \"as is\" and Mind by Gab is not liable for indirect damages arising from your use of it."),
-]
-
-PRIVACY = [
-    ("What we collect", "On this website we only collect what you choose to give us: your email address if you sign up for the newsletter, and anything you send us by email. Membership sign-ups, logins and payments happen on Fourthwall, which collects the details needed to run your account and process payments under its own privacy policy. We never see your full card details."),
-    ("How we use it", "We use your email to send the newsletter you asked for and to reply to your messages. Fourthwall shares with us the basic member information needed to provide your membership (such as your name, email and membership status)."),
-    ("What we never do", "We do not sell or rent your personal information, and we do not share it with third parties for their own marketing."),
-    ("Your choices", "You can unsubscribe from the newsletter at any time using the link in any email. You can ask us to access, correct or delete your information by emailing us."),
-    ("Cookies", "This website does not use advertising or tracking cookies. Fourthwall pages may use cookies to keep you logged in and process payments."),
-    ("Contact", "Questions about privacy? Email us at the address below and we will get back to you."),
-]
-
-
-def legal_page(R):
-    def block(items):
-        return "".join(f"<h3>{escape(t)}</h3><p>{escape(x)}</p>" for t, x in items)
-    return head(R, "Terms of Service & Privacy Policy | HitBeatRun", "HitBeatRun terms of service and privacy policy.") + f"""
-<body data-root="{R}" data-mode="main">
-{header(R, "main", home_active=False)}
-<main class="legal">
-  <div class="legal-head">
-    <span class="eyebrow">Legal</span>
-    <h1>Terms of Service &amp; <span class="grad-text">Privacy Policy</span></h1>
-    <p>Last updated: October 10, 2026</p>
-    <div class="legal-jump"><a href="#terms">Terms of Service</a><a href="#privacy">Privacy Policy</a></div>
-  </div>
-  <section class="legal-card" id="terms"><h2>Terms of Service</h2>{block(TERMS)}</section>
-  <section class="legal-card" id="privacy"><h2>Privacy Policy</h2>{block(PRIVACY)}
-    <p>Contact: <a href="#" data-email></a></p></section>
-</main>
-""" + footer(R, "main")
-
-
 def write(rel, html):
     p = SITE / rel
     p.parent.mkdir(parents=True, exist_ok=True)
@@ -522,7 +482,14 @@ if __name__ == "__main__":
     write("songs/index.html", songs_index("../"))
     for i, s in enumerate(SONGS):
         write(f"songs/{s[0]}.html", song_page("../", i))
-    write("legal.html", legal_page(""))
+    # Terms + Privacy live on Fourthwall; legal.html forwards there so old links keep working
+    write("legal.html", """<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Terms of Service | HitBeatRun</title>
+<meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url=https://members-hitbeatrun-shop.fourthwall.com/pages/terms-of-service">
+<script>location.replace(location.hash === "#privacy" ? "https://members-hitbeatrun-shop.fourthwall.com/pages/privacy-policy" : "https://members-hitbeatrun-shop.fourthwall.com/pages/terms-of-service");</script></head>
+<body style="background:#000;color:#fff;font-family:sans-serif;text-align:center;padding:60px">
+<p><a style="color:#da44c1" href="https://members-hitbeatrun-shop.fourthwall.com/pages/terms-of-service">Terms of Service</a> &middot; <a style="color:#da44c1" href="https://members-hitbeatrun-shop.fourthwall.com/pages/privacy-policy">Privacy Policy</a></p></body></html>
+""")
     # hitbeatrun.com/supporters -> Fourthwall shop (old links keep working)
     fw = "https://members-hitbeatrun-shop.fourthwall.com"
     write("supporters/index.html", f"""<!doctype html>

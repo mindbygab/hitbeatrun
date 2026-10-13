@@ -8,7 +8,7 @@ No Wix, no hosting bill.
 | Main site (hitbeatrun.com) | `index.html` |
 | Fourthwall subscription landing page (same design) | `subscribe/index.html` → hitbeatrun.com/subscribe/ |
 | 8 song workout videos | `songs/*.html` |
-| Terms of Service + Privacy Policy | `legal.html` |
+| Terms of Service + Privacy Policy | on Fourthwall (footer links); `legal.html` forwards there |
 
 ## 1. Set your links (once)
 Open `assets/js/main.js` and edit the three values at the top:
