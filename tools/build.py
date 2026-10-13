@@ -180,13 +180,13 @@ def home_page(R, mode):
 
   <div class="stack">
     <article class="stack-card"><header class="g1"><img src="{R}assets/img/icon-brain.png" alt=""><h2>The Science Behind Running to the Beat</h2></header>
-      {bg_video(R, "hero-science", "poster-1a175681.jpg")}</article>
+      {bg_video(R, "hero-science", "poster-1a175681.jpg", "eager")}</article>
     <article class="stack-card"><header class="g2"><img src="{R}assets/img/icon-x.png" alt=""><h2>Integrating HITBEATRUN In Your Daily Workout</h2></header>
-      {bg_video(R, "hero-integrating", "poster-5d27d50d.jpg")}</article>
+      {bg_video(R, "hero-integrating", "poster-5d27d50d.jpg", "eager")}</article>
     <article class="stack-card"><header class="g3"><img src="{R}assets/img/icon-o.png" alt=""><h2>1500+<br>Students Using Hitbeatrun</h2></header>
-      {bg_video(R, "hero-students", "poster-55d00e39.jpg")}</article>
+      {bg_video(R, "hero-students", "poster-55d00e39.jpg", "eager")}</article>
     <article class="stack-card"><header class="g4"><img src="{R}assets/img/icon-344.png" alt=""><h2>New Songs Analyzed with<br>HITBEATRUN Algorithm</h2></header>
-      {bg_video(R, "hero-newsongs", "poster-061d9c62.jpg")}</article>
+      {bg_video(R, "hero-newsongs", "poster-061d9c62.jpg", "eager")}</article>
   </div>
   <div class="hero-cta"><a class="btn btn-white btn-run" href="#" data-cta>{L['get']}</a></div>
 </section>
@@ -373,7 +373,7 @@ def home_page(R, mode):
     </div>
     <div class="phone-stage reveal from-right" data-parallax="40">
       <div class="phone-ring"></div>
-      <div class="phone">{bg_video(R, "athlete-eval", "poster-90e08844.jpg")}<span class="live-badge"><i></i>Live test</span></div>
+      <div class="phone" data-sound role="button" tabindex="0" aria-label="Turn sound on or off">{bg_video(R, "athlete-eval", "poster-90e08844.jpg")}<span class="live-badge"><i></i>Live test</span><button class="sound-btn" type="button" tabindex="-1" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4z"/><path class="off" d="M22 9l-6 6M16 9l6 6"/><path class="on" d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg><span class="off">Tap for sound</span><span class="on">Sound on</span></button></div>
       <div class="float-chip fc-a"><b>&uarr; Energy rising</b><span>Speed up to MAX</span></div>
     </div>
   </div>
@@ -381,7 +381,7 @@ def home_page(R, mode):
   <div class="wrap split rev">
     <div class="phone-stage reveal from-left" data-parallax="40">
       <div class="phone-ring ring-b"></div>
-      <div class="phone">{bg_video(R, "ai-vision", "poster-67e72562.jpg")}<span class="live-badge"><i></i>AI analysis</span></div>
+      <div class="phone" data-sound role="button" tabindex="0" aria-label="Turn sound on or off">{bg_video(R, "ai-vision", "poster-67e72562.jpg")}<span class="live-badge"><i></i>AI analysis</span><button class="sound-btn" type="button" tabindex="-1" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4z"/><path class="off" d="M22 9l-6 6M16 9l6 6"/><path class="on" d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg><span class="off">Tap for sound</span><span class="on">Sound on</span></button></div>
       <div class="float-chip fc-b"><b>Energy shift detected</b><span>Drop in 4 beats</span></div>
     </div>
     <div class="copy reveal from-right">

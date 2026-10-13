@@ -68,10 +68,30 @@ const HBR = {
       if (isIntersecting) {
         if (!v.getAttribute('src')) { v.src = v.dataset.src; v.load(); }
         tryPlay(v);
-      } else { waiting.delete(v); if (!v.paused) v.pause(); }
+      } else if (!v.classList.contains('eager')) {
+        waiting.delete(v); if (!v.paused) v.pause();
+        const ph = v.closest('.phone.sound-on'); if (ph) { v.muted = true; ph.classList.remove('sound-on'); }
+      }
     });
   }, { rootMargin: '200px' });
   vids.forEach(v => vio.observe(v));
+  // hero card videos: load and start right away so they're already playing when you reach them
+  vids.filter(v => v.classList.contains('eager')).forEach(v => {
+    v.preload = 'auto'; v.src = v.dataset.src; v.load(); tryPlay(v);
+  });
+
+  // Athlete + AI videos: tap to turn sound on, tap again to mute
+  document.querySelectorAll('.phone[data-sound]').forEach(ph => {
+    const v = ph.querySelector('video');
+    const toggle = () => {
+      const on = v.muted;
+      document.querySelectorAll('.phone.sound-on').forEach(o => { if (o !== ph) { o.classList.remove('sound-on'); o.querySelector('video').muted = true; } });
+      v.muted = !on; ph.classList.toggle('sound-on', on);
+      if (on) { if (!v.getAttribute('src')) { v.src = v.dataset.src; } v.play().catch(() => {}); }
+    };
+    ph.addEventListener('click', toggle);
+    ph.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
+  });
   const wake = () => vids.forEach(v => { if (v.getAttribute('src') && v.paused && onScreen(v)) tryPlay(v); });
   ['touchstart', 'pointerdown', 'scroll'].forEach(ev => addEventListener(ev, wake, { passive: true }));
 
