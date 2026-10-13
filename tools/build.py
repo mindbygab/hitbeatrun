@@ -135,16 +135,16 @@ def footer(R, mode):
 def bg_video(R, name, poster, cls=""):
     cls_attr = f' class="{cls}"' if cls else ""
     return (f'<video{cls_attr} data-src="{R}assets/video/{name}.mp4" '
-            f'poster="{R}assets/img/{poster}" muted loop playsinline preload="none"></video>')
+            f'poster="{R}assets/img/{poster}" muted autoplay loop playsinline webkit-playsinline disablepictureinpicture preload="none"></video>')
 
 
 def home_page(R, mode):
     L = LABELS[mode]
     S = {s[0]: s for s in SONGS}
     song_rows = "".join(
-        f"""<div class="song reveal"><img src="{R}assets/img/{s[3]}" alt="" loading="lazy">
+        f"""<div class="song reveal"><img src="{R}assets/img/thumbs/{s[3].rsplit('.', 1)[0]}.jpg" alt="" width="60" height="60">
         <div class="meta"><div class="t">{escape(s[1])}</div><div class="a">{escape(s[2])}</div></div>
-        <a class="btn btn-outline btn-play" href="{R}songs/{s[0]}.html"><span>&#9654;</span> Play</a></div>"""
+        <a class="btn-play" href="{R}songs/{s[0]}.html" data-play="{R}assets/video/{s[4]}.mp4" data-poster="{R}assets/img/frame-{s[4]}.jpg" data-title="{escape(s[5])}" aria-label="Play {escape(s[1])}"><span class="pi"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>Play</a></div>"""
         for s in SONGS)
     title = "HitBeatRun | Boost Your Workout by Running to the Beat"
     if mode == "landing":
@@ -421,6 +421,16 @@ def home_page(R, mode):
 </section>
 
 </main>
+
+<!-- in-page video player for "Try It Live" -->
+<div class="player-modal" id="player" role="dialog" aria-modal="true" aria-label="Song preview" hidden>
+  <div class="pm-backdrop" data-close></div>
+  <div class="pm-box">
+    <div class="pm-head"><b class="pm-title"></b><button class="pm-close" data-close aria-label="Close">&times;</button></div>
+    <video class="pm-video" controls playsinline webkit-playsinline preload="auto"></video>
+    <div class="pm-foot"><span>Liked it? Members get every song.</span><a class="btn btn-white btn-run" href="#" data-cta>{RUN}</a></div>
+  </div>
+</div>
 """ + footer(R, mode)
 
 

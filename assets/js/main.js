@@ -47,17 +47,51 @@ const HBR = {
   burger?.addEventListener('click', () => nav.classList.toggle('open'));
   nav?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
 
-  // Background videos: load + play only while on screen
-  const vids = document.querySelectorAll('video[data-src]');
+  // Background videos: load + play only while on screen.
+  // Phones only autoplay videos that are muted + inline, so force both, and if the
+  // browser still refuses (e.g. iPhone Low Power Mode) start them on the first touch.
+  const vids = [...document.querySelectorAll('video[data-src]')];
+  const waiting = new Set();
+  const tryPlay = v => {
+    const p = v.play();
+    if (p) p.then(() => waiting.delete(v)).catch(() => waiting.add(v));
+  };
+  vids.forEach(v => {
+    v.muted = true; v.defaultMuted = true; v.playsInline = true;
+    v.setAttribute('muted', ''); v.setAttribute('playsinline', '');
+  });
   const vio = new IntersectionObserver(entries => {
     entries.forEach(({ target: v, isIntersecting }) => {
       if (isIntersecting) {
-        if (!v.src) v.src = v.dataset.src;
-        v.play().catch(() => {});
-      } else if (!v.paused) v.pause();
+        if (!v.getAttribute('src')) { v.src = v.dataset.src; v.load(); }
+        tryPlay(v);
+      } else { waiting.delete(v); if (!v.paused) v.pause(); }
     });
   }, { rootMargin: '200px' });
   vids.forEach(v => vio.observe(v));
+  const wake = () => waiting.forEach(tryPlay);
+  ['touchstart', 'pointerdown', 'scroll'].forEach(ev => addEventListener(ev, wake, { passive: true }));
+
+  // "Try It Live": play the song video right here in a pop-up player
+  const modal = document.getElementById('player');
+  if (modal) {
+    const mv = modal.querySelector('.pm-video');
+    const close = () => {
+      mv.pause(); mv.removeAttribute('src'); mv.load();
+      modal.hidden = true; document.body.style.overflow = '';
+    };
+    document.querySelectorAll('[data-play]').forEach(btn => btn.addEventListener('click', e => {
+      e.preventDefault();
+      modal.querySelector('.pm-title').textContent = btn.dataset.title;
+      mv.poster = btn.dataset.poster || '';
+      mv.src = btn.dataset.play;
+      modal.hidden = false; document.body.style.overflow = 'hidden';
+      mv.muted = false;
+      mv.play().catch(() => {});
+    }));
+    modal.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', close));
+    addEventListener('keydown', e => { if (e.key === 'Escape' && !modal.hidden) close(); });
+  }
 
   // Hero card stack (same effect as Wix): each card slides up, grows from 88% to 100%
   // and fades its video in, landing exactly on top of the previous one; the finished
