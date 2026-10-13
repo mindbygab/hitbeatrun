@@ -2,12 +2,10 @@
    HitBeatRun — site settings. Edit these three values.
    ============================================================ */
 const HBR = {
-  // Your Fourthwall subscription page (every "Let's Run" button goes here).
-  // hitbeatrun.com/supporters works before AND after the domain switch: today it is Fourthwall itself,
-  // afterwards supporters/index.html on this site forwards to members.hitbeatrun.com/supporters.
-  FOURTHWALL_URL: 'https://hitbeatrun.com/supporters',
+  // Your Fourthwall shop: every "Let's Run" / subscribe button goes here
+  FOURTHWALL_URL: 'https://members-hitbeatrun-shop.fourthwall.com',
   // Where members log in to watch the videos ("Log In" links)
-  FOURTHWALL_LOGIN: 'https://hitbeatrun.com/supporters',
+  FOURTHWALL_LOGIN: 'https://members-hitbeatrun-shop.fourthwall.com',
   // Shown in the footer and used by the forms when no FORM_ENDPOINT is set
   CONTACT_EMAIL: 'info@hitbeatrun.com',
   // Optional: a Formspree / Getform / Basin URL so forms submit without opening email
