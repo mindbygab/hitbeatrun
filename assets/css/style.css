@@ -501,7 +501,8 @@ h1, h2, h3, .heavy { font-family: var(--heavy); font-weight: 700; }
   .hero .tagline { font-size: 26px; line-height: 1.25; margin-top: 22px; padding: 0 24px; }
   .logo-stage { width: 76%; margin: 48px auto 0; }
   /* circles sit behind the runner, below all text */
-  .orbit-1 { top: 520px; width: 400px; height: 400px; } .orbit-2 { top: 640px; width: 620px; height: 620px; }
+  /* nested rings: the small one sits fully inside the big one, so they never cross */
+  .orbit-1 { top: 470px; width: 330px; height: 330px; } .orbit-2 { top: 590px; width: 600px; height: 600px; }
   .hero-glow { background: radial-gradient(260px 240px at 30% 500px, rgba(94,149,229,.32), transparent 70%), radial-gradient(260px 240px at 72% 540px, rgba(218,68,193,.30), transparent 70%); }
   .hero-grid { display: none; }
   .stack { margin-top: 50px; }

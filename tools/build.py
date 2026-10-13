@@ -134,7 +134,11 @@ def footer(R, mode):
 
 def bg_video(R, name, poster, cls=""):
     cls_attr = f' class="{cls}"' if cls else ""
-    return (f'<video{cls_attr} data-src="{R}assets/video/{name}.mp4?v={ver(f"assets/video/{name}.mp4")}" '
+    url = f'{R}assets/video/{name}.mp4?v={ver(f"assets/video/{name}.mp4")}'
+    if cls == "direct":  # source given up front so Safari's own autoplay starts it
+        return (f'<video class="direct" src="{url}" data-src="{url}" poster="{R}assets/img/{poster}" '
+                'muted autoplay loop playsinline webkit-playsinline disablepictureinpicture preload="auto"></video>')
+    return (f'<video{cls_attr} data-src="{url}" '
             f'poster="{R}assets/img/{poster}" muted autoplay loop playsinline webkit-playsinline disablepictureinpicture preload="none"></video>')
 
 
@@ -282,11 +286,11 @@ def home_page(R, mode):
       </ul>
       <a class="btn btn-white btn-run" href="#" data-cta>{RUN}</a>
     </div>
-    <div class="about-visual reveal from-right">
+    <div class="about-visual">
       <div class="about-glow"></div>
       <div class="screen">
         <div class="screen-bar"><i></i><i></i><i></i><span>hitbeatrun &middot; live analysis</span></div>
-        {bg_video(R, "what-is", "poster-7bd19447.jpg")}
+        {bg_video(R, "what-is", "poster-7bd19447.jpg", "direct")}
       </div>
       <div class="meter">
         <div class="meter-head"><b>Music energy</b><span class="meter-live"><i></i>128 BPM</span></div>
