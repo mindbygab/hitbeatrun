@@ -56,9 +56,12 @@ const HBR = {
     const p = v.play();
     if (p) p.then(() => waiting.delete(v)).catch(() => waiting.add(v));
   };
+  const onScreen = v => { const r = v.getBoundingClientRect(); return r.bottom > -200 && r.top < innerHeight + 200; };
   vids.forEach(v => {
-    v.muted = true; v.defaultMuted = true; v.playsInline = true;
+    v.muted = true; v.defaultMuted = true; v.playsInline = true; v.loop = true;
     v.setAttribute('muted', ''); v.setAttribute('playsinline', '');
+    // as soon as a video has data, start it if it's on screen (iPhones can refuse an early play())
+    ['loadeddata', 'canplay'].forEach(ev => v.addEventListener(ev, () => { if (onScreen(v)) tryPlay(v); }));
   });
   const vio = new IntersectionObserver(entries => {
     entries.forEach(({ target: v, isIntersecting }) => {
@@ -69,7 +72,7 @@ const HBR = {
     });
   }, { rootMargin: '200px' });
   vids.forEach(v => vio.observe(v));
-  const wake = () => waiting.forEach(tryPlay);
+  const wake = () => vids.forEach(v => { if (v.getAttribute('src') && v.paused && onScreen(v)) tryPlay(v); });
   ['touchstart', 'pointerdown', 'scroll'].forEach(ev => addEventListener(ev, wake, { passive: true }));
 
   // "Try It Live": play the song video right here in a pop-up player
@@ -152,7 +155,7 @@ const HBR = {
 
   // Reveal-on-scroll and the progress bars
   const rio = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); rio.unobserve(e.target); } });
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); rio.unobserve(e.target); e.target.querySelectorAll('video[data-src]').forEach(v => setTimeout(() => v.getAttribute('src') && v.paused && tryPlay(v), 700)); } });
   }, { threshold: 0.15 });
   document.querySelectorAll('.reveal, .how-wrap').forEach(el => rio.observe(el));
 

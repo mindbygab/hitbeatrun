@@ -134,7 +134,7 @@ def footer(R, mode):
 
 def bg_video(R, name, poster, cls=""):
     cls_attr = f' class="{cls}"' if cls else ""
-    return (f'<video{cls_attr} data-src="{R}assets/video/{name}.mp4" '
+    return (f'<video{cls_attr} data-src="{R}assets/video/{name}.mp4?v={ver(f"assets/video/{name}.mp4")}" '
             f'poster="{R}assets/img/{poster}" muted autoplay loop playsinline webkit-playsinline disablepictureinpicture preload="none"></video>')
 
 
