@@ -117,13 +117,14 @@ h1, h2, h3, .heavy { font-family: var(--heavy); font-weight: 700; }
 /* stacked sticky cards */
 .stack { --card-w: min(422px, calc(100vw - 32px), calc(100svh - 330px)); position: relative; width: var(--card-w); margin: 0 auto; padding-bottom: 40px; }
 .stack::after { content: ""; display: block; height: 30svh; }
-.stack-card { position: sticky; top: 90px; border-radius: 50px; overflow: hidden; background: #fff; box-shadow: 0 -12px 40px rgba(0,0,0,.55); transform-origin: 50% 0; will-change: transform; }
+.stack-card { position: sticky; top: 90px; border-radius: 50px; overflow: hidden; background: var(--navy); box-shadow: 0 -12px 40px rgba(0,0,0,.55); transform-origin: 50% 0; will-change: transform; }
 .stack-card video { transition: opacity .15s linear; }
 .stack-card + .stack-card { margin-top: 40px; }
-.stack-card header { height: 128px; display: flex; align-items: center; gap: 16px; padding: 0 40px; border-radius: 50px 50px 0 0; }
+.stack-card header { height: 128px; display: flex; align-items: center; gap: 16px; padding: 0 40px; }
 .stack-card header img { width: 47px; height: 47px; object-fit: contain; flex: none; border-radius: 10px; }
 .stack-card h2 { font-size: 20px; line-height: 1.1; color: #000; }
-.stack-card video { width: 100%; aspect-ratio: 1; object-fit: cover; }
+.stack-card video { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; }
+.stack-card { transition: filter .2s linear; }
 .g1 { background: linear-gradient(90deg, #5e95e5, #da44c1); }
 .g2 { background: linear-gradient(90deg, #5e95e5, #5500aa); }
 .g3 { background: linear-gradient(90deg, #5e95e5, #0066ff); }
@@ -475,22 +476,28 @@ h1, h2, h3, .heavy { font-family: var(--heavy); font-weight: 700; }
   .perks { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
   .perk-img { aspect-ratio: 16/9; }
   .btn-big { font-size: 16px; padding: 15px 26px; }
-  .stack-card { border-radius: 36px; }
+  .stack-card { border-radius: 30px; }
+  /* hero on phones: one tidy row of tags, no floating icons, clear spacing */
+  .hero { padding-top: 92px; }
+  .hero-top { min-height: 0; padding-bottom: 10px; }
+  .slot { top: -64px !important; }
+  .s-tech { left: 14px !important; right: auto !important; }
+  .s-run { left: calc(50% - 52px) !important; right: auto !important; }
+  .s-bpm { right: 14px !important; left: auto !important; }
+  .s-run .pill { animation-delay: -2s; }
+  .pill { padding: 8px 14px; font-size: 13px !important; box-shadow: none !important; }
+  .bpm { gap: 7px; } .bpm b { width: 8px; height: 8px; }
+  .s-energy, .s-watch, .s-music, .s-drink, .s-cur1, .s-cur2 { display: none; }
+  .hero h1 { padding-top: 22px; font-size: 62px; }
+  .hero .tagline { font-size: 27px; line-height: 1.2; margin-top: 18px; padding: 0 20px; }
+  .logo-stage { width: 78%; margin: 34px auto 0; }
+  .orbit-1 { top: 520px; width: 760px; height: 760px; } .orbit-2 { top: 600px; width: 520px; height: 520px; }
+  .stack { margin-top: 30px; }
   .stack-card header { padding: 0 26px; height: 104px; }
   .btn-play { padding: 5px 14px 5px 5px; font-size: 14px; gap: 8px; }
   .pm-foot { justify-content: center; text-align: center; }
   .pill { padding: 8px 18px; }
-  .s-energy { left: 6%; top: 300px; } .s-energy .float-icon { width: 56px; }
-  .s-watch { right: 6%; top: 440px; } .s-watch .float-icon { width: 46px; }
     /* hero on phones: tags sit above the title instead of on top of it */
-  .hero { padding-top: 84px; }
-  .hero h1 { padding-top: 30px; }
-  .hero .tagline { font-size: 30px; padding: 0 12px; }
-  .s-tech { top: -58px; left: 16px; }
-  .s-bpm { top: -58px; left: auto; right: 16px; }
-  .s-run { top: 300px; right: 10px; }
-  .s-energy { top: 330px; left: 4%; }
-  .s-watch { top: 200px; right: 5%; }
   .pill-tech, .bpm { font-size: 14px; }
   .ns-field input { width: auto; min-width: 0; flex: 1; }
   .legal-card { padding: 26px 22px; }

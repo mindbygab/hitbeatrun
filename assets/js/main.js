@@ -103,14 +103,18 @@ const HBR = {
     const update = () => {
       ticking = false;
       const vh = innerHeight;
+      // On phones the cards slide in at full width (no shrink) so the card underneath
+      // never peeks out around the edges; the covered card dims instead.
+      const small = innerWidth < 600;
       cards.forEach((card, i) => {
         if (i === 0) return;
         const stickTop = parseFloat(getComputedStyle(card).top);
         const top = card.getBoundingClientRect().top;
         const p = Math.min(1, Math.max(0, 1 - (top - stickTop) / (vh - stickTop)));
         const e = 1 - Math.pow(1 - p, 3);
-        card.style.transform = `scale(${0.88 + 0.12 * e})`;
+        card.style.transform = small ? '' : `scale(${0.88 + 0.12 * e})`;
         if (vidOf[i]) vidOf[i].style.opacity = Math.min(1, p * 1.6).toFixed(3);
+        cards[i - 1].style.filter = p > 0.02 ? `brightness(${(1 - 0.55 * p).toFixed(3)})` : '';
       });
     };
     const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
