@@ -1,11 +1,13 @@
 /* ============================================================
-   HitBeatRun — site settings. Edit these three values.
+   HitBeatRun — site settings. Edit these values.
    ============================================================ */
 const HBR = {
   // Your Fourthwall shop: every "Let's Run" / subscribe button goes here
   FOURTHWALL_URL: 'https://members-hitbeatrun-shop.fourthwall.com',
-  // Where members log in to watch the videos ("Log In" links)
-  FOURTHWALL_LOGIN: 'https://members-hitbeatrun-shop.fourthwall.com',
+  // Where members sign in to watch the videos ("Log In" / "Log In to Watch" buttons)
+  FOURTHWALL_LOGIN: 'https://members-hitbeatrun-shop.fourthwall.com/supporters/sign_in',
+  // Members area / supporters page ("Download the paper")
+  FOURTHWALL_SUPPORTERS: 'https://members-hitbeatrun-shop.fourthwall.com/supporters',
   // Shown in the footer and used by the forms when no FORM_ENDPOINT is set
   CONTACT_EMAIL: 'info@hitbeatrun.com',
   // Optional: a Formspree / Getform / Basin URL so forms submit without opening email
@@ -18,6 +20,7 @@ const HBR = {
   // Every "Let's Run" button goes to the Fourthwall subscription page
   document.querySelectorAll('[data-cta]').forEach(a => { a.href = HBR.FOURTHWALL_URL; });
   document.querySelectorAll('[data-fourthwall]').forEach(a => { a.href = HBR.FOURTHWALL_LOGIN; });
+  document.querySelectorAll('[data-supporters]').forEach(a => { a.href = HBR.FOURTHWALL_SUPPORTERS; });
   document.querySelectorAll('[data-email]').forEach(a => {
     a.href = 'mailto:' + HBR.CONTACT_EMAIL; a.textContent = HBR.CONTACT_EMAIL;
   });

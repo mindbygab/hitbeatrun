@@ -87,6 +87,7 @@ def footer(R, mode):
     <h2>Your next run is<br><span class="grad-text">one beat away.</span></h2>
     <p>Every song, speed ramp and run-along video for <b>$4.99/month</b>. Cancel anytime.</p>
     <a class="btn btn-white btn-run btn-big" href="#" data-cta>{RUN}</a>
+    <p class="member-line">Already a member? <a href="#" data-fourthwall>Log in &rarr;</a></p>
   </div>
   <form class="news-strip" data-form="Newsletter">
     <div class="ns-text"><b>Not ready yet?</b> Get new songs and running tips by email.</div>
@@ -199,7 +200,8 @@ def home_page(R, mode):
 <section class="run-banner reveal">
   <h2>Ready to transform your running game?</h2>
   <p>Find your three running speeds, follow the cues in every video as the music builds and drops, and get more out of every workout.</p>
-  <a class="btn btn-black btn-run" href="#" data-cta>{RUN}</a>
+  <a class="btn btn-black btn-run" href="#" data-cta>Access Now</a>
+  <p class="member-line dark">Already a member? <a href="#" data-fourthwall>Log in &rarr;</a></p>
 </section>
 
 <!-- ================= PRICING (Fourthwall membership) ================= -->
@@ -284,7 +286,7 @@ def home_page(R, mode):
         <li><span class="ap-icon"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span>
           <div><b>Made for every runner</b><p>Beginner or seasoned runner, every run becomes an energizing and immersive journey.</p></div></li>
       </ul>
-      <a class="btn btn-white btn-run" href="#" data-cta>{RUN}</a>
+      <a class="btn btn-white btn-run" href="#" data-cta>Access Now</a>
     </div>
     <div class="about-visual">
       <div class="about-glow"></div>
@@ -373,7 +375,7 @@ def home_page(R, mode):
         <li><b>Live</b><span>speed changes on the beat</span></li>
         <li><b>Pro</b><span>indoor cycling instructor</span></li>
       </ul>
-      <a class="btn btn-white btn-run" href="#" data-cta>{RUN}</a>
+      <a class="btn btn-white btn-run" href="#" data-fourthwall>Log In to Watch</a>
     </div>
     <div class="phone-stage reveal from-right" data-parallax="40">
       <div class="phone-ring"></div>
@@ -416,8 +418,8 @@ def home_page(R, mode):
         <li><b>Real</b><span>athlete testing</span></li>
       </ul>
       <div class="sci-btns">
-        <a class="btn btn-white" href="{R}assets/docs/HitBeatRun-Research-Paper.pdf" target="_blank" rel="noopener">Download the paper</a>
-        <a class="btn btn-outline btn-run" href="#" data-cta>{RUN}</a>
+        <a class="btn btn-white" href="#" data-supporters>Download the paper</a>
+        <a class="btn btn-outline btn-run" href="#" data-cta>Access Now</a>
       </div>
     </div>
     <div class="sci-paper"><img src="{R}assets/img/research-paper.png" alt="New! Research Paper: Harmonizing Heartbeats" loading="lazy"></div>

@@ -410,6 +410,12 @@ h1, h2, h3, .heavy { font-family: var(--heavy); font-weight: 700; }
 /* ---------- simple pages ---------- */
 .page { padding: 80px 0 100px; }
 
+/* "Already a member? Log in" line under main CTAs */
+.member-line { margin-top: 14px; font-size: 14px; color: rgba(255,255,255,.75); }
+.member-line a { font-family: var(--heavy); font-weight: 700; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.member-line.dark { color: rgba(0,0,0,.7); position: relative; z-index: 1; }
+.member-line.dark a { background: none; color: #000; text-decoration: underline; text-underline-offset: 3px; }
+
 /* ---------- in-page player ---------- */
 .player-modal { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 16px; }
 .player-modal[hidden] { display: none; }
