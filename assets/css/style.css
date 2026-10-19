@@ -247,6 +247,12 @@ h1, h2, h3, .heavy { font-family: var(--heavy); font-weight: 700; }
 .btn-play .pi svg { width: 14px; height: 14px; fill: #9271d0; margin-left: 2px; }
 .btn-play:hover, .song:hover .btn-play { background-position: 100% 0; transform: translateY(-2px); box-shadow: 0 10px 26px rgba(218,68,193,.45); }
 .btn-play:active { transform: scale(.96); }
+.music-note { display: flex; gap: 14px; align-items: flex-start; margin: 34px auto 0; max-width: 900px; padding: 18px 20px; border-radius: 18px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.12); }
+.mn-icon { flex: none; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: rgba(94,182,229,.14); }
+.mn-icon svg { width: 18px; height: 18px; fill: none; stroke: var(--sky); stroke-width: 2; stroke-linecap: round; }
+.music-note p { font-size: 13.5px; line-height: 1.6; color: rgba(255,255,255,.7); }
+.music-note b { color: #fff; font-family: var(--heavy); }
+.music-note a { display: inline-block; margin-top: 6px; font-family: var(--heavy); font-weight: 700; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .songs-cta { text-align: center; margin-top: 44px; }
 .songs-cta p { font-size: 17px; color: rgba(255,255,255,.85); margin-bottom: 18px; }
 .song-list { display: grid; grid-template-columns: 1fr 1fr; column-gap: 60px; }
@@ -442,6 +448,11 @@ h1, h2, h3, .heavy { font-family: var(--heavy); font-weight: 700; }
 .legal-card h3 { font-size: 18px; margin: 26px 0 8px; color: var(--sky); }
 .legal-card p { font-size: 16px; line-height: 1.7; color: rgba(255,255,255,.85); }
 .legal-card a { text-decoration: underline; }
+.credits { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+.credits li { display: flex; flex-direction: column; padding: 12px 14px; border-radius: 14px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); }
+.credits b { font-family: var(--heavy); font-size: 15px; }
+.credits span { font-size: 13.5px; color: rgba(255,255,255,.7); }
+@media (max-width: 600px) { .credits { grid-template-columns: 1fr; } }
 
 /* ---------- reveal ---------- */
 .reveal { opacity: 0; transform: translateY(32px); transition: opacity .6s ease, transform .6s ease; }

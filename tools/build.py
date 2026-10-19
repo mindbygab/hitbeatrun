@@ -115,6 +115,7 @@ def footer(R, mode):
       <h4>Legal</h4>
       <a href="https://members-hitbeatrun-shop.fourthwall.com/pages/terms-of-service" target="_blank" rel="noopener">Terms of Service</a>
       <a href="https://members-hitbeatrun-shop.fourthwall.com/pages/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>
+      <a href="{R}music.html">Music &amp; Credits</a>
     </div>
     <div class="fc-col">
       <h4>Contact Us</h4>
@@ -358,6 +359,11 @@ def home_page(R, mode):
     <p class="lead">Check how HitBeatRun works with some popular songs. Press play, follow the speed cues and try it out.</p>
   </div>
   <div class="song-list">{song_rows}</div>
+  <div class="music-note reveal">
+    <span class="mn-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></span>
+    <p><b>About these preview songs:</b> the tracks above belong to their original artists and rights holders. HitBeatRun does not own them, claims no rights in them and does not sell them; they are shown only as free examples of how the HitBeatRun algorithm reads a song's beat and energy. The music inside the HitBeatRun membership is original, created with a paid Suno plan that permits commercial use.
+    <a href="{R}music.html">Learn more about HitBeatRun songs &rarr;</a></p>
+  </div>
   <div class="songs-cta reveal">
     <p>Liked it? Members get every song, with new ones added regularly.</p>
     <a class="btn btn-white btn-run" href="#" data-cta>{RUN}</a>
@@ -471,6 +477,48 @@ def songs_index(R):
 """ + footer(R, "main")
 
 
+def music_page(R):
+    credits = "".join(f"<li><b>{escape(s[1])}</b><span>{escape(s[2])}</span></li>" for s in SONGS)
+    return head(R, "Music & Credits | HitBeatRun", "Where the music on HitBeatRun comes from: preview songs by their original artists, and original member music made with a paid Suno plan.") + f"""
+<body data-root="{R}" data-mode="main">
+{header(R, "main", home_active=False)}
+<main class="legal music">
+  <div class="legal-head">
+    <span class="eyebrow">Music &amp; Credits</span>
+    <h1>About <span class="grad-text">HitBeatRun songs</span></h1>
+    <p>Last updated: October 19, 2026</p>
+    <div class="legal-jump"><a href="#previews">Preview songs</a><a href="#members">Member music</a><a href="#rights">Rights holders</a></div>
+  </div>
+
+  <section class="legal-card" id="previews">
+    <h2>Preview songs on this website</h2>
+    <p>The &ldquo;Try It Live&rdquo; section shows a few popular songs so you can see how the HitBeatRun algorithm works: it reads each song's tempo (BPM) and energy and shows when to switch between your low, medium and max speeds.</p>
+    <h3>Who owns them</h3>
+    <p>These songs, their recordings, titles and artwork belong to their original artists, songwriters, labels and other rights holders. HitBeatRun does not own them and claims no rights in them. They are credited below by title and artist.</p>
+    <h3>How they are used</h3>
+    <p>The previews are free to watch and are shown only as examples of the method. They are not sold, not part of the paid membership and not offered for download. Their appearance here does not mean the artists endorse or are affiliated with HitBeatRun.</p>
+    <h3>Credits</h3>
+    <ul class="credits">{credits}</ul>
+  </section>
+
+  <section class="legal-card" id="members">
+    <h2>Music inside the HitBeatRun membership</h2>
+    <p>The songs in the members-only HitBeatRun videos are original music created by HitBeatRun with <a href="https://suno.com" target="_blank" rel="noopener">Suno</a>, an AI music tool, on a paid subscription plan whose terms allow commercial use of the songs generated and downloaded under that plan.</p>
+    <h3>What that means for you</h3>
+    <p>Your membership lets you stream these videos for your own personal workouts. The music and videos may not be downloaded, re-uploaded, shared or used commercially, as set out in the <a href="https://members-hitbeatrun-shop.fourthwall.com/pages/terms-of-service" target="_blank" rel="noopener">Terms of Service</a>.</p>
+    <h3>AI-generated music</h3>
+    <p>We say openly that member music is AI-generated with Suno. Any resemblance to existing songs is unintentional; if you believe a member track is too close to your work, please contact us below.</p>
+  </section>
+
+  <section class="legal-card" id="rights">
+    <h2>For artists and rights holders</h2>
+    <p>We respect artists' rights. If you own or represent any song shown on HitBeatRun and would like it credited differently or removed, email us with the song title and a link to where it appears. We will review your request promptly and remove the content if asked.</p>
+    <p>Contact: <a href="#" data-email></a></p>
+  </section>
+</main>
+""" + footer(R, "main")
+
+
 def write(rel, html):
     p = SITE / rel
     p.parent.mkdir(parents=True, exist_ok=True)
@@ -484,6 +532,7 @@ if __name__ == "__main__":
     write("songs/index.html", songs_index("../"))
     for i, s in enumerate(SONGS):
         write(f"songs/{s[0]}.html", song_page("../", i))
+    write("music.html", music_page(""))
     # Terms + Privacy live on Fourthwall; legal.html forwards there so old links keep working
     write("legal.html", """<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><title>Terms of Service | HitBeatRun</title>
