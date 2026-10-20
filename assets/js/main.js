@@ -194,13 +194,33 @@ const HBR = {
     });
   }
 
+  // Only real-looking addresses are sent to MailerLite
+  const BLOCKED = ['example.com','example.org','example.net','test.com','test.org','localhost','invalid','email.com','domain.com',
+    'mailinator.com','yopmail.com','guerrillamail.com','sharklasers.com','10minutemail.com','tempmail.com','temp-mail.org',
+    'trashmail.com','getnada.com','dispostable.com','maildrop.cc','fakeinbox.com','throwawaymail.com','mailnesia.com'];
+  const TYPOS = { 'gmial.com':'gmail.com','gmal.com':'gmail.com','gmaill.com':'gmail.com','gnail.com':'gmail.com','gmail.co':'gmail.com',
+    'gmail.con':'gmail.com','gamil.com':'gmail.com','hotmial.com':'hotmail.com','hotmai.com':'hotmail.com','hotmail.co':'hotmail.com',
+    'yaho.com':'yahoo.com','yahooo.com':'yahoo.com','yahoo.co':'yahoo.com','outlok.com':'outlook.com','outlook.co':'outlook.com',
+    'icloud.co':'icloud.com','iclod.com':'icloud.com' };
+  function checkEmail(email) {
+    if (!/^[a-z0-9._%+-]+@[a-z0-9-]+(\.[a-z0-9-]+)*\.[a-z]{2,}$/.test(email)) return 'Please enter a valid email address, like name@gmail.com.';
+    const [user, domain] = email.split('@');
+    if (TYPOS[domain]) return `Did you mean ${user}@${TYPOS[domain]}?`;
+    if (BLOCKED.includes(domain) || domain.endsWith('.test') || domain.endsWith('.example') || domain.endsWith('.invalid'))
+      return 'Please use your real email address so you get our updates.';
+    return '';
+  }
+
   // Newsletter form -> MailerLite (keeps the site's own design)
   document.querySelectorAll('form[data-form]').forEach(form => {
     const msg = form.querySelector('.form-msg');
     const btn = form.querySelector('button[type="submit"]');
     form.addEventListener('submit', async ev => {
       ev.preventDefault();
-      const email = form.querySelector('input[name="email"]').value.trim();
+      const input = form.querySelector('input[name="email"]');
+      const email = input.value.trim().toLowerCase();
+      const problem = checkEmail(email);
+      if (problem) { msg.textContent = problem; msg.className = 'form-msg err'; input.focus(); return; }
       const data = new FormData();
       data.append('fields[email]', email);
       data.append('ml-submit', '1');
