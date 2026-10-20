@@ -361,8 +361,8 @@ def home_page(R, mode):
   <div class="song-list">{song_rows}</div>
   <div class="music-note reveal">
     <span class="mn-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></span>
-    <p><b>About these preview songs:</b> the tracks above belong to their original artists and rights holders. HitBeatRun does not own them, claims no rights in them and does not sell them; they are shown only as free examples of how the HitBeatRun algorithm reads a song's beat and energy. The music inside the HitBeatRun membership is original, created with a paid Suno plan that permits commercial use.
-    <a href="{R}music.html">Learn more about HitBeatRun songs &rarr;</a></p>
+    <div><p><b>About these preview songs:</b> the tracks above belong to their original artists and rights holders. HitBeatRun does not own them, claims no rights in them and does not sell them; they are shown only as free examples of how the HitBeatRun algorithm reads a song's beat and energy. The music inside the HitBeatRun membership is original and licensed for commercial use.</p>
+    <a class="mn-link" href="{R}music.html">Learn more about HitBeatRun songs &rarr;</a></div>
   </div>
   <div class="songs-cta reveal">
     <p>Liked it? Members get every song, with new ones added regularly.</p>

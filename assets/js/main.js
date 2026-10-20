@@ -9,7 +9,7 @@ const HBR = {
   // Members area / supporters page ("Download the paper")
   FOURTHWALL_SUPPORTERS: 'https://members-hitbeatrun-shop.fourthwall.com/supporters',
   // Shown in the footer and used by the forms when no FORM_ENDPOINT is set
-  CONTACT_EMAIL: 'info@hitbeatrun.com',
+  CONTACT_EMAIL: 'mindbygab@gmail.com',
   // Optional: a Formspree / Getform / Basin URL so forms submit without opening email
   FORM_ENDPOINT: '',
 };

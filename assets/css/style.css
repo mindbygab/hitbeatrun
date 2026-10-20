@@ -252,7 +252,8 @@ h1, h2, h3, .heavy { font-family: var(--heavy); font-weight: 700; }
 .mn-icon svg { width: 18px; height: 18px; fill: none; stroke: var(--sky); stroke-width: 2; stroke-linecap: round; }
 .music-note p { font-size: 13.5px; line-height: 1.6; color: rgba(255,255,255,.7); }
 .music-note b { color: #fff; font-family: var(--heavy); }
-.music-note a { display: inline-block; margin-top: 6px; font-family: var(--heavy); font-weight: 700; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.music-note .mn-link { display: inline-flex; margin-top: 12px; padding: 8px 16px; border-radius: 30px; border: 1px solid rgba(146,113,208,.6); font-family: var(--heavy); font-weight: 700; font-size: 13.5px; color: #fff; background: rgba(146,113,208,.15); transition: background .2s, border-color .2s; }
+.music-note .mn-link:hover { background: var(--grad); border-color: transparent; }
 .songs-cta { text-align: center; margin-top: 44px; }
 .songs-cta p { font-size: 17px; color: rgba(255,255,255,.85); margin-bottom: 18px; }
 .song-list { display: grid; grid-template-columns: 1fr 1fr; column-gap: 60px; }
