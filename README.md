@@ -15,7 +15,7 @@ Open `assets/js/main.js` and edit the three values at the top:
 - `FOURTHWALL_URL` – where every "Let's Run" button goes (https://members-hitbeatrun-shop.fourthwall.com)
 - `FOURTHWALL_LOGIN` – where "Log In" goes (members watch the videos on Fourthwall)
 - `CONTACT_EMAIL` – shown in the footer and on the Music & Credits page (mindbygab@gmail.com)
-- `FORM_ENDPOINT` – optional (e.g. a free Formspree form) so the newsletter form submit without opening the visitor's email app
+- `MAILERLITE_URL` – newsletter sign-ups are saved to your MailerLite list (Subscribers in MailerLite)
 
 Put the research paper PDF at `assets/docs/HitBeatRun-Research-Paper.pdf` (the "Download it!" button points there).
 

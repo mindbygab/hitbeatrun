@@ -8,10 +8,10 @@ const HBR = {
   FOURTHWALL_LOGIN: 'https://members-hitbeatrun-shop.fourthwall.com/supporters/sign_in',
   // Members area / supporters page ("Download the paper")
   FOURTHWALL_SUPPORTERS: 'https://members-hitbeatrun-shop.fourthwall.com/supporters',
-  // Shown in the footer and used by the forms when no FORM_ENDPOINT is set
+  // Shown in the footer and on the Music & Credits page
   CONTACT_EMAIL: 'mindbygab@gmail.com',
-  // Optional: a Formspree / Getform / Basin URL so forms submit without opening email
-  FORM_ENDPOINT: '',
+  // Newsletter sign-ups go straight into your MailerLite subscriber list
+  MAILERLITE_URL: 'https://assets.mailerlite.com/jsonp/2726641/forms/201813222636914532/subscribe',
 };
 
 (() => {
@@ -194,24 +194,33 @@ const HBR = {
     });
   }
 
-  // Newsletter form
+  // Newsletter form -> MailerLite (keeps the site's own design)
   document.querySelectorAll('form[data-form]').forEach(form => {
+    const msg = form.querySelector('.form-msg');
+    const btn = form.querySelector('button[type="submit"]');
     form.addEventListener('submit', async ev => {
       ev.preventDefault();
-      const msg = form.querySelector('.form-msg');
-      const data = new FormData(form);
-      data.append('form', form.dataset.form);
-      if (HBR.FORM_ENDPOINT) {
-        try {
-          const r = await fetch(HBR.FORM_ENDPOINT, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
-          if (!r.ok) throw new Error();
-          form.reset();
-          if (msg) msg.textContent = 'Thanks! You’re in.';
-        } catch { if (msg) msg.textContent = 'Something went wrong, please try again.'; }
-        return;
-      }
-      const lines = [...data.entries()].map(([k, v]) => `${k}: ${v}`).join('\n');
-      location.href = `mailto:${HBR.CONTACT_EMAIL}?subject=${encodeURIComponent('HitBeatRun — ' + form.dataset.form)}&body=${encodeURIComponent(lines)}`;
+      const email = form.querySelector('input[name="email"]').value.trim();
+      const data = new FormData();
+      data.append('fields[email]', email);
+      data.append('ml-submit', '1');
+      data.append('anticsrf', 'true');
+      btn.disabled = true; const label = btn.textContent; btn.textContent = 'Signing up…';
+      msg.textContent = ''; msg.classList.remove('ok', 'err');
+      try {
+        const r = await fetch(HBR.MAILERLITE_URL, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
+        const res = await r.json().catch(() => ({}));
+        if (!r.ok || !res.success) {
+          const e = res.errors && res.errors.fields && res.errors.fields.email;
+          throw new Error(e ? 'Please enter a valid email address.' : 'Something went wrong, please try again.');
+        }
+        form.reset();
+        msg.textContent = 'Thanks! You’re on the list. Watch your inbox for new songs and running tips.';
+        msg.classList.add('ok');
+      } catch (err) {
+        msg.textContent = err.message || 'Something went wrong, please try again.';
+        msg.classList.add('err');
+      } finally { btn.disabled = false; btn.textContent = label; }
     });
   });
 })();
